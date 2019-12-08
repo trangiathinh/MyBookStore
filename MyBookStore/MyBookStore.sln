@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBookStore", "MyBookStore\MyBookStore.csproj", "{9FD26532-32CB-42F1-AD48-3ACBC4F7BAED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF", "EF\EF.csproj", "{B314DA3B-48C3-4E45-8039-F42850FFF3DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{F2C8F079-1A28-4BDE-87F2-10F29F54E158}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FD26532-32CB-42F1-AD48-3ACBC4F7BAED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FD26532-32CB-42F1-AD48-3ACBC4F7BAED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FD26532-32CB-42F1-AD48-3ACBC4F7BAED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FD26532-32CB-42F1-AD48-3ACBC4F7BAED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B314DA3B-48C3-4E45-8039-F42850FFF3DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B314DA3B-48C3-4E45-8039-F42850FFF3DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B314DA3B-48C3-4E45-8039-F42850FFF3DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B314DA3B-48C3-4E45-8039-F42850FFF3DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2C8F079-1A28-4BDE-87F2-10F29F54E158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2C8F079-1A28-4BDE-87F2-10F29F54E158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2C8F079-1A28-4BDE-87F2-10F29F54E158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2C8F079-1A28-4BDE-87F2-10F29F54E158}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FDCDBE4-8219-4F11-AFF3-34C2767EAEF7}
+	EndGlobalSection
+EndGlobal
