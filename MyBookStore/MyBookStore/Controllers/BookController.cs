@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MyBookStore.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Repository;
+
 
 namespace MyBookStore.Controllers
 {
@@ -18,8 +19,8 @@ namespace MyBookStore.Controllers
         // GET: Book
         public ActionResult Index()
         {
-            
-            return View("",unitOfWork.BookRepository.GetAll().ToList());
+
+            return View("", unitOfWork.BookRepository.GetAll().ToList());
         }
     }
 }
