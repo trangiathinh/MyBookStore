@@ -20,12 +20,15 @@ namespace MyBookStore.ViewModels
         public string Email { get; set; }
         [Display(Name ="Mật khẩu")]
         [Required(ErrorMessage = "Mật không được rỗng", AllowEmptyStrings = false)]
+        [DataType(DataType.Password)]
         [MinLength(8, ErrorMessage ="Mật khẩu phải chứa ít nhất 8 ký tự")]
         [MaxLength(20, ErrorMessage = "Mật khẩu không được quá 20 ký tự")]
         public string Password { get; set; }
 
 
         [Display(Name ="Xác nhận mật khẩu")]
+        [DataType(DataType.Password)]
+        [Compare("Password",ErrorMessage ="Mật khẩu xác nhận và mật khẩu không trùng khớp")]
         public string ConfirmPassword { get; set; }
 
         [Display(Name="Ngày sinh")]

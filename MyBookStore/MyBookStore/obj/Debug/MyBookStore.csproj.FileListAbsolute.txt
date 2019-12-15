@@ -138,8 +138,6 @@ C:\PersonalProject\MyBookStore\MyBookStore\bin\ru\Microsoft.Data.SqlClient.resou
 C:\PersonalProject\MyBookStore\MyBookStore\bin\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\PersonalProject\MyBookStore\MyBookStore\bin\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 C:\PersonalProject\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csprojAssemblyReference.cache
-C:\BookStore\MyBookStore\MyBookStore\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\BookStore\MyBookStore\MyBookStore\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\MyBookStore.dll.config
 C:\BookStore\MyBookStore\MyBookStore\bin\MyBookStore.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\MyBookStore.pdb
@@ -152,9 +150,11 @@ C:\BookStore\MyBookStore\MyBookStore\bin\roslyn\csi.rsp
 C:\BookStore\MyBookStore\MyBookStore\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\BookStore\MyBookStore\MyBookStore\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\BookStore\MyBookStore\MyBookStore\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\roslyn\Microsoft.Managed.Core.targets
 C:\BookStore\MyBookStore\MyBookStore\bin\roslyn\Microsoft.VisualBasic.Core.targets
@@ -248,6 +248,9 @@ C:\BookStore\MyBookStore\MyBookStore\bin\System.Web.Razor.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\System.Web.WebPages.Deployment.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\System.Web.WebPages.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\System.Web.WebPages.Razor.dll
+C:\BookStore\MyBookStore\MyBookStore\bin\Unity.Abstractions.dll
+C:\BookStore\MyBookStore\MyBookStore\bin\Unity.Container.dll
+C:\BookStore\MyBookStore\MyBookStore\bin\Unity.Mvc5.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\WebGrease.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\Microsoft.AspNetCore.Authentication.Abstractions.xml
 C:\BookStore\MyBookStore\MyBookStore\bin\Microsoft.AspNetCore.Authentication.Core.xml
@@ -304,6 +307,8 @@ C:\BookStore\MyBookStore\MyBookStore\bin\System.Web.WebPages.xml
 C:\BookStore\MyBookStore\MyBookStore\bin\System.Web.WebPages.Deployment.xml
 C:\BookStore\MyBookStore\MyBookStore\bin\System.Web.WebPages.Razor.xml
 C:\BookStore\MyBookStore\MyBookStore\bin\Newtonsoft.Json.xml
+C:\BookStore\MyBookStore\MyBookStore\bin\Unity.Abstractions.pdb
+C:\BookStore\MyBookStore\MyBookStore\bin\Unity.Container.pdb
 C:\BookStore\MyBookStore\MyBookStore\bin\Antlr3.Runtime.pdb
 C:\BookStore\MyBookStore\MyBookStore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\BookStore\MyBookStore\MyBookStore\bin\de\Microsoft.Data.SqlClient.resources.dll
@@ -316,12 +321,8 @@ C:\BookStore\MyBookStore\MyBookStore\bin\pt-BR\Microsoft.Data.SqlClient.resource
 C:\BookStore\MyBookStore\MyBookStore\bin\ru\Microsoft.Data.SqlClient.resources.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\BookStore\MyBookStore\MyBookStore\bin\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\BookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csprojAssemblyReference.cache
 C:\BookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csproj.CoreCompileInputs.cache
 C:\BookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csproj.CopyComplete
 C:\BookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.dll
 C:\BookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.pdb
-C:\BookStore\MyBookStore\MyBookStore\bin\Unity.Abstractions.dll
-C:\BookStore\MyBookStore\MyBookStore\bin\Unity.Container.dll
-C:\BookStore\MyBookStore\MyBookStore\bin\Unity.Mvc5.dll
-C:\BookStore\MyBookStore\MyBookStore\bin\Unity.Abstractions.pdb
-C:\BookStore\MyBookStore\MyBookStore\bin\Unity.Container.pdb

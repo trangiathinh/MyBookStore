@@ -1,15 +1,18 @@
-﻿
-using MyBookStore.Models;
+﻿using MyBookStore.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MyBookStore.Repository
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
-        IRepository<Book> BookRepository { get; }
+        IBookRepository BookRepository { get; }
         IAccountRepository AccountRepository { get; }
+        IRoleRepository RoleRepository { get; }
+        ICustomerRepository CustomerRepository { get; }
+        IBookTypeRepository BookTypeRepository { get; }
+        MyBookStoreContext Context { get; }
         void Save();
     }
 }

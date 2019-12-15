@@ -50,17 +50,17 @@ namespace MyBookStore.Models
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasMaxLength(100)
-                    .IsFixedLength();
+                    .IsUnicode(false);
 
                 entity.Property(e => e.PasswordHash)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .IsFixedLength();
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.PhoneNumber)
+                entity.Property(e => e.Salt)
                     .IsRequired()
-                    .HasMaxLength(15)
-                    .IsFixedLength();
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Account)
@@ -127,8 +127,7 @@ namespace MyBookStore.Models
 
                 entity.Property(e => e.ImagePath)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .IsFixedLength();
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.IsActive)
                     .IsRequired()
@@ -199,8 +198,8 @@ namespace MyBookStore.Models
 
                 entity.Property(e => e.PhoneNumber)
                     .IsRequired()
-                    .HasMaxLength(15)
-                    .IsFixedLength();
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Customer>(entity =>
@@ -218,7 +217,7 @@ namespace MyBookStore.Models
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasMaxLength(100)
-                    .IsFixedLength();
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Gender)
                     .IsRequired()
@@ -339,7 +338,7 @@ namespace MyBookStore.Models
 
             modelBuilder.Entity<Reply>(entity =>
             {
-                entity.HasNoKey();
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.ReplyText)
                     .IsRequired()

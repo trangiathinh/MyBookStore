@@ -1,0 +1,28 @@
+﻿@model List<MyBookStore.Models.BookType>
+    <div class="category col-lg-3">
+        <strong>Danh mục sách</strong>
+        <hr />
+        @{
+            if (Model.Count > 0)
+            {
+                <nav class="navbar">
+                    <ul class="navbar-nav ml-0 pl-0">
+                        @foreach (var item in Model)
+                        {
+                            <!-- Links -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">@item.BookTypeName</a>
+                            </li>
+                            @*<li class="nav-item">
+                                <a class="nav-link" href="#">Sách kinh tế - tài chính</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sách giáo khoa</a>
+                            </li>*@
+                        }
+                    </ul>
+                </nav>
+            }
+        }
+
+    </div>

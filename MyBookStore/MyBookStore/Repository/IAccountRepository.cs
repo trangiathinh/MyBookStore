@@ -10,7 +10,7 @@ namespace MyBookStore.Repository
 {
     public interface IAccountRepository : IRepository<Account>
     {
-        bool Login(LoginViewModel model);
+        Account Login(LoginViewModel model);
         bool IsUniqueEmail(string email);
     }
 }

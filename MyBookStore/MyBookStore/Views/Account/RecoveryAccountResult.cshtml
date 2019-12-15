@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Kết quả</title>
+</head>
+<body>
+    <div>
+        @{
+            if (ViewBag.Status)
+            {
+                <div class="bg-success">
+                    <span>Khôi phục tài khoản thành công! Nhấn vào &nbsp;</span> <a href="@Url.Action("Login","Account")">đây</a>
+                    <span>để đăng nhập!</span>
+                </div>
+            }
+            else
+            {
+                <div class="bg-danger">
+                    <span>Khôi phục tài khoản thất bại!</span>
+                </div>
+
+            }
+        }
+    </div>
+</body>
+</html>

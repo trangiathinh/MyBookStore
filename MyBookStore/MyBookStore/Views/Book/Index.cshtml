@@ -1,0 +1,78 @@
+﻿@model List<MyBookStore.Models.Book>
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<div class="col-lg-9">*@
+<strong>Sản phẩm nổi bật</strong>
+<hr />
+@{
+    if (Model.Count > 0)
+    {
+    <div class="row mt-2">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 col-md-3 col-sm-4">
+                <div class="card">
+                    <div class="card-body text-left">
+                        <a href="#"><img src="@item.ImagePath" class="img-fluid" /></a>
+                        <p class="card-text title">@item.Title</p>
+                        <span class="d-block text-truncate small">Tên Tác giả</span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    }
+}
+@*<div class="row mt-2">
+    <div class="col-lg-3 col-md-3 col-sm-4">
+        <div class="card">
+            <div class="card-body text-left">
+                <a href="#"><img src="" class="img-fluid" /></a>
+                <p class="card-text title">Some text inside the first card</p>
+                <span class="d-block text-truncate small">Tên Tác giả</span>
+            </div>
+        </div>
+    </div>*@
+    @*<div class="col-lg-3 col-md-3 col-sm-4">
+            <div class="card">
+                <div class="card-body text-left">
+                    <a href="#"><img src="~/Images/the-diem-can-bang-bien-chien-luoc-thanh-hanh-dong.jpg" class="img-fluid" /></a>
+                    <p class="card-text title">Some text inside the first card Some text inside the first card</p>
+                    <span class="d-block text-truncate small">Tên Tác giả</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4">
+            <div class="card">
+                <div class="card-body text-left">
+                    <a href="#"><img src="~/Images/suy-tuong.jpg" class="img-fluid" /></a>
+                    <p class="card-text title">Some text inside the first card</p>
+                    <span class="d-block text-truncate small">Tên Tác giả nha bạn Tên Tác giả nha bạn</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="card">
+                <div class="card-body text-left">
+                    <a href="#"><img src="~/Images/mat-biec-phien-ban-phim.jpg" class="img-fluid" /></a>
+                    <p class="card-text title">Some text inside the first card</p>
+                    <span class="small">Tên Tác giả</span>
+                </div>
+            </div>
+        </div>*@
+@*</div>*@
+@*<div class="row mt-2">
+        <div class="col-lg-3 col-md-3 col-sm-4">
+            <div class="card">
+                <div class="card-body text-left">
+                    <a href="#"><img src="~/Images/trieu-phu-bat-dong-san-tu-than-dinh-huong-dau-tu-mua-dau-lai-do.png" class="img-fluid" /></a>
+                    <p class="card-text title">Some text inside the first card</p>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+@*</div>*@
+

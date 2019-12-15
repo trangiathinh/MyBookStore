@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - MyBookStore</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Scripts/mycss/main.css" rel="stylesheet" />
 </head>
 <body class="container-fluid">
     @*headers menu*@
@@ -20,7 +21,7 @@
                 <!--Menu-->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="@Url.Action("Index","Home")">Trang chủ <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Sách bán chạy</a>
@@ -43,14 +44,31 @@
                 <!--Account and Shopping cart -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
+                        @{ 
+                            string message = "Tài khoản";
+                            if (HttpContext.Current.Request.IsAuthenticated)
+                            {
+                                message = "Xin chào, " + HttpContext.Current.User.Identity.Name;
+                            }
+                        }
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Tài khoản
+                           @message
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="@Url.Action("Login","Account")">Đăng nhập</a>
-                            <a class="dropdown-item" href="@Url.Action("Register","Account")">Đăng ký</a>
+                            @if (HttpContext.Current.Request.IsAuthenticated)
+                            {
+                                <a class="dropdown-item" href="@Url.Action("LogOut","Account")">Đăng xuất</a>
+                                <a class="dropdown-item" href="@Url.Action("ShowInformation","Account")">Thông tin tài khoản</a>
+                            }
+                            else
+                            {
+                                <a class="dropdown-item" href="@Url.Action("Login","Account")">Đăng nhập</a>
+                                <a class="dropdown-item" href="@Url.Action("Register","Account")">Đăng ký</a>
+                            }
+
                             @*<div class="dropdown-divider"></div>*@
-                            <a class="dropdown-item" href="@Url.Action("Register","Account")">Thông tin tài khoản</a>
+
+
                         </div>
                     </li>
                     <li class="nav-item navbar-collapse ml-4">
@@ -64,20 +82,71 @@
     </div>
 
 
-    <div class="container body-content">
-        <div class="left-content col-md-2">
-            <h4>
-                Danh mục sách
-            </h4>
+    <div class="container p-4">
+        <div class="row">
+           @{ 
+               Html.RenderAction("Index","BookType");
+           }
+            <div class="col-lg-9">
+                @RenderBody()
+                @*<strong>Sản phẩm nổi bật</strong>
+        <hr />
+        <div class="row mt-2">
+            <div class="col-lg-3 col-md-3 col-sm-4">
+                <div class="card">
+                    <div class="card-body text-left">
+                        <a href="#"><img src="~/Images/khong-so-hai.jpg" class="img-fluid" /></a>
+                        <p class="card-text title">Some text inside the first card</p>
+                        <span class="d-block text-truncate small">Tên Tác giả</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4">
+                <div class="card">
+                    <div class="card-body text-left">
+                        <a href="#"><img src="~/Images/the-diem-can-bang-bien-chien-luoc-thanh-hanh-dong.jpg" class="img-fluid" /></a>
+                        <p class="card-text title">Some text inside the first card Some text inside the first card</p>
+                        <span class="d-block text-truncate small">Tên Tác giả</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4">
+                <div class="card">
+                    <div class="card-body text-left">
+                        <a href="#"><img src="~/Images/suy-tuong.jpg" class="img-fluid" /></a>
+                        <p class="card-text title">Some text inside the first card</p>
+                        <span class="d-block text-truncate small">Tên Tác giả nha bạn Tên Tác giả nha bạn</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="card">
+                    <div class="card-body text-left">
+                        <a href="#"><img src="~/Images/mat-biec-phien-ban-phim.jpg" class="img-fluid" /></a>
+                        <p class="card-text title">Some text inside the first card</p>
+                        <span class="small">Tên Tác giả</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="content col-md-10">
-            @RenderBody()
-        </div>
+        <div class="row mt-2">
+            <div class="col-lg-3 col-md-3 col-sm-4">
+                <div class="card">
+                    <div class="card-body text-left">
+                        <a href="#"><img src="~/Images/trieu-phu-bat-dong-san-tu-than-dinh-huong-dau-tu-mua-dau-lai-do.png" class="img-fluid" /></a>
+                        <p class="card-text title">Some text inside the first card</p>
+                    </div>
+                </div>
+            </div>
+        </div>*@
 
+            </div>
+        </div>
+       
 
         @*<footer>
                 <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>*@
+        </footer>*@
     </div>
 
     @Scripts.Render("~/bundles/jquery")

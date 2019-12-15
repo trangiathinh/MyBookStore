@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyBookStore.Repository
 {
-    public interface IBookRepository:IRepository<Book>
+    public interface IBookRepository : IRepository<Book>
     {
         //add more methods here
     }

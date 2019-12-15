@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace MyBookStore.Controllers
 {
+    [RoutePrefix("books")]
     public class BookController : Controller
     {
         private IUnitOfWork unitOfWork;
@@ -17,10 +18,16 @@ namespace MyBookStore.Controllers
             this.unitOfWork = unitOfWork;
         }
         // GET: Book
+        [Route()]
         public ActionResult Index()
         {
-
-            return View("", unitOfWork.BookRepository.GetAll().ToList());
+            return View("Index", unitOfWork.BookRepository.GetAll().ToList());
         }
+        [Route("detail/{id}")]
+        public ActionResult Detail(string id)
+        {
+            return View();
+        }
+
     }
 }

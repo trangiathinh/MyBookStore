@@ -1,22 +1,38 @@
-﻿using System;
+﻿using MyBookStore.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using MyBookStore.Models;
+
 
 namespace MyBookStore.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public IRepository<Book> BookRepository { get; }
-        public IRepository<Customer> CustomerRepository { get; }
+        public IBookRepository BookRepository { get; }
         public IAccountRepository AccountRepository { get; }
 
-       
+        public IRoleRepository RoleRepository { get; }
 
-        private MyBookStoreContext context;
-        public UnitOfWork()
+        public MyBookStoreContext Context { get; }
+
+        public ICustomerRepository CustomerRepository { get; }
+
+        public IBookTypeRepository BookTypeRepository { get; }
+
+        public UnitOfWork(MyBookStoreContext context,
+                          IAccountRepository accountRepository,
+                          IRoleRepository roleRepository,
+                          ICustomerRepository customerRepository,
+                          IBookTypeRepository bookTypeRepository,
+                          IBookRepository bookRepository
+                          )
         {
-            context = new MyBookStoreContext();
+            Context = context;
+            this.AccountRepository = accountRepository;
+            this.RoleRepository = roleRepository;
+            this.CustomerRepository = customerRepository;
+            this.BookTypeRepository = bookTypeRepository;
+            this.BookRepository = bookRepository;
         }
         private bool disposed = false;
         public void Dispose(bool disposing)
@@ -25,7 +41,7 @@ namespace MyBookStore.Repository
             {
                 if (disposing)
                 {
-                    context.Dispose();
+                    Context.Dispose();
                 }
             }
             this.disposed = true;
@@ -37,7 +53,7 @@ namespace MyBookStore.Repository
         }
         public void Save()
         {
-            context.SaveChanges();
+            Context.SaveChanges();
         }
     }
 }

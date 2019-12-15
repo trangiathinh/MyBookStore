@@ -4,53 +4,49 @@
     ViewBag.Title = "Đăng nhập tài khoản";
 }
 
-<h2>Đăng nhập</h2>
-
+<h4>Đăng nhập</h4>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="form-horizontal">
+    <div class="">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Email,new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Email, new { @class = "form-control"})
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
                 @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group form-check">
-            @Html.LabelFor(model => model.RememberMe, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.CheckBoxFor(model => model.RememberMe, new { @class = "from-control" })
-                    @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
-                </div>
+        <div class="form-group">
+            <div class="form-check-inline col-md-1 pl-3" style="width:3%">
+                @Html.CheckBoxFor(model => model.RememberMe, new { @class = "form-check-input" })
             </div>
+            @Html.LabelFor(model => model.RememberMe, new { @class = "form-check-label col-md-3" })
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Đăng nhập" class="btn btn-default" />
-                @Html.ActionLink("Quên mật khẩu?", "ForgetPassword")
+            <div class="col-md-offset-3 col-md-9">
+                <input type="submit" value="Đăng nhập" class="btn btn-primary" />
+                @Html.ActionLink("Quên mật khẩu?", "ForgotPassword")
             </div>
-           
-        </div>
 
+        </div>
+        <div class="pl-3">
+            <span>Bạn chưa có tài khoản?</span>@Html.ActionLink("Đăng ký tài khoản", "Register")
+        </div>
     </div>
-    <div>
-        <span>Bạn chưa có tài khoản?</span>@Html.ActionLink("Tạo tài khoản", "Register")
-    </div>
+
 }
 
 

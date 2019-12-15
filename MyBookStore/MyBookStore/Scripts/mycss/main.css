@@ -1,0 +1,22 @@
+﻿body {
+    font-family: "Lato",sans-serif;
+    box-sizing: border-box;
+}
+.category .navbar .navbar-nav .nav-item .nav-link{
+    color: #6c757d;
+}
+    .category .navbar .navbar-nav .nav-item .nav-link:hover {
+        color: black;
+    }
+.card .card-body .title {
+    display: block;
+    display: -webkit-box;
+    max-width: 100%;
+    height: 45px;
+    margin: 0 auto;
+    line-height: 1;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+   overflow:hidden;
+    text-overflow: ellipsis;
+}

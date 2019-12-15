@@ -12,27 +12,32 @@ namespace MyBookStore.Repository
 {
     public class AccountRepository : Repository<Account>, IAccountRepository
     {
-        public AccountRepository(MyBookStoreContext context):base(context)
+        public AccountRepository(MyBookStoreContext context) : base(context)
         {
-            
+
         }
 
         public bool IsUniqueEmail(string email)
         {
             var account = Get(p => p.Email == email);
-            return account == null;
+            return account.ToList().Count == 0;
         }
 
-        public bool Login(LoginViewModel model)
+        public Account Login(LoginViewModel model)
         {
-            string passwordHash = Crypto.HashPassword(model.Password);
-            
-            var account = Get(p => p.Email == model.Email && p.PasswordHash == passwordHash);
-            if (account!=null)
+            var account = Get(p => p.Email == model.Email,includeProperties:"Customer").FirstOrDefault();
+            string salt = account.Salt;
+            string passwordHash = Crypto.SHA256(model.Password + salt);
+
+            if (account != null)
             {
-                return true;
+                if (string.Compare(passwordHash, account.PasswordHash) == 0)
+                {
+                    return account;
+                }
             }
-            return false;
+            return null;
         }
+
     }
 }

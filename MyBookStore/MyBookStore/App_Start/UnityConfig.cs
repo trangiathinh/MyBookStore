@@ -1,3 +1,4 @@
+using MyBookStore.Models;
 using MyBookStore.Repository;
 using System.Web.Mvc;
 using Unity;
@@ -15,9 +16,14 @@ namespace MyBookStore
             // it is NOT necessary to register your controllers
 
             // e.g. container.RegisterType<ITestService, TestService>();
+            container.RegisterSingleton<MyBookStoreContext>();
+            container.RegisterSingleton<IUnitOfWork, UnitOfWork>();
+            container.RegisterType<IAccountRepository, AccountRepository>();
+            container.RegisterType<ICustomerRepository, CustomerRepository>();
+            container.RegisterType<IRoleRepository, RoleRepository>();
+            container.RegisterType<IBookTypeRepository, BookTypeRepository>();
+            container.RegisterType<IBookRepository, BookRepository>();
 
-            container.RegisterType<IUnitOfWork, UnitOfWork>();
-            
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
