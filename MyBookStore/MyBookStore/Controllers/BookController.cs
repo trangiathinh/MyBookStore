@@ -21,7 +21,8 @@ namespace MyBookStore.Controllers
         [Route()]
         public ActionResult Index()
         {
-            return View("Index", unitOfWork.BookRepository.GetAll().ToList());
+            //return View("Index", unitOfWork.BookRepository.GetAll().ToList());
+            return View();
         }
         [Route("detail/{id}")]
         public ActionResult Detail(string id)

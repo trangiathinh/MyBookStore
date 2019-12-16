@@ -9,14 +9,45 @@
         color: black;
     }
 .card .card-body .title {
-    display: block;
     display: -webkit-box;
-    max-width: 100%;
-    height: 45px;
-    margin: 0 auto;
-    line-height: 1;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-   overflow:hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
 }
+.card .card-body .current-price{
+    color:red;
+}
+.card .card-body .checked {
+    color:orange;
+}
+.card .hovereffect {
+    width: 100%;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    cursor: default;
+}
+    .card .hovereffect img {
+        display: block;
+        position: relative;
+        -webkit-transition: all .3s linear;
+        transition: all .3s linear;
+    }
+    .card .hovereffect a:hover {
+        box-shadow: 0 0 5px #fff;
+        /*margin-bottom: 5px;*/
+    }
+
+    .card .hovereffect:hover img {
+        margin-bottom: 5px;
+        -ms-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    .card .hovereffect:hover a {
+        -webkit-transition-delay: .2s;
+        transition-delay: .2s;
+    }

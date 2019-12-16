@@ -408,7 +408,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\mycss\detailbook.css" />
     <Content Include="Scripts\mycss\main.css" />
+    <Content Include="Scripts\myjs\detailbook.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -512,6 +514,7 @@
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\RecoveryAccount.cshtml" />
     <Content Include="Views\Account\RecoveryAccountResult.cshtml" />
+    <Content Include="Views\Book\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
