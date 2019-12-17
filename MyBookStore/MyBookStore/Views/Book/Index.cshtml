@@ -1,4 +1,5 @@
-﻿@*@model List<MyBookStore.Models.Book>*@
+﻿@model List<MyBookStore.ViewModels.BookViewModel>
+@using MyBookStore.ViewModels
 @{
     ViewBag.Title = "Index";
 }
@@ -7,25 +8,46 @@
 <strong>Sản phẩm nổi bật</strong>
 <hr />
 @{
-    @*if (Model.Count > 0)
+    int rows = (int)Math.Ceiling(Model.Count * 1.0 / 4);
+    int length = Model.Count;
+    for (int i = 0; i < rows; i++)
     {
     <div class="row mt-2">
-        @foreach (var item in Model)
-        {
-            <div class="col-lg-3 col-md-3 col-sm-4">
-                <div class="card">
-                    <div class="card-body text-left">
-                        <a href="#"><img src="@item.ImagePath" class="img-fluid" /></a>
-                        <p class="card-text title">@item.Title</p>
-                        <span class="d-block text-truncate small">Tên Tác giả</span>
+        @{
+            for (int j = 1; j <= 4; j++)
+            {
+                if (i * 4 + j <= length)
+                {
+                    BookViewModel item = Model.ElementAt(i*4+j-1);
+                    <div class="col-lg-3 col-md-3 col-sm-4">
+                        <div class="card">
+                            <div class="card-body text-left hovereffect">
+                                <a href="@Url.Action("Detail","Book",new { id=item.Id})"><img src="@item.ImagePath" class="img-fluid" style="max-height:138.138px;" /></a>
+                                <p class="card-text title small">@item.Title</p>
+                                <span class="text-truncate font-weight-bold current-price">@item.Price</span>
+                                <span class="font-weight-light small"><del>160000đ</del></span>
+                                <br />
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                }
+                else
+                {
+                    return;
+                }
+            }
         }
     </div>
-    }*@
+        
+
+    }
 }
-<div class="row mt-2">
+@*<div class="row mt-2">
     <div class="col-lg-3 col-md-3 col-sm-4">
         <div class="card">
             <div class="card-body text-left hovereffect">
@@ -43,54 +65,54 @@
         </div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-4">
-            <div class="card">
-                <div class="card-body text-left hovereffect">
-                    <a href="#"><img src="~/Images/the-diem-can-bang-bien-chien-luoc-thanh-hanh-dong.jpg" class="img-fluid" /></a>
-                    <p class="card-text title small">Some text inside the first card Some text inside the first card</p>
-                    <span class="text-truncate font-weight-bold current-price">140000đ</span>
-                    <span class="font-weight-light small"><del>160000đ</del></span>
-                    <br />
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
+        <div class="card">
+            <div class="card-body text-left hovereffect">
+                <a href="#"><img src="~/Images/the-diem-can-bang-bien-chien-luoc-thanh-hanh-dong.jpg" class="img-fluid" /></a>
+                <p class="card-text title small">Some text inside the first card Some text inside the first card</p>
+                <span class="text-truncate font-weight-bold current-price">140000đ</span>
+                <span class="font-weight-light small"><del>160000đ</del></span>
+                <br />
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-4">
-            <div class="card">
-                <div class="card-body text-left hovereffect">
-                    <a href="#"><img src="~/Images/suy-tuong.jpg" class="img-fluid" /></a>
-                    <p class="card-text title small">Some text inside the first card</p>
-                    <span class="text-truncate font-weight-bold current-price">140000đ</span>
-                    <span class="font-weight-light small"><del>160000đ</del></span>
-                    <br />
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-4">
+        <div class="card">
+            <div class="card-body text-left hovereffect">
+                <a href="#"><img src="~/Images/suy-tuong.jpg" class="img-fluid" /></a>
+                <p class="card-text title small">Some text inside the first card</p>
+                <span class="text-truncate font-weight-bold current-price">140000đ</span>
+                <span class="font-weight-light small"><del>160000đ</del></span>
+                <br />
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-6">
-            <div class="card">
-                <div class="card-body text-left hovereffect">
-                    <a href="#"><img src="~/Images/mat-biec-phien-ban-phim.jpg" class="img-fluid" /></a>
-                    <p class="card-text title small">Some text inside the first card</p>
-                    <span class="text-truncate font-weight-bold current-price">140000đ</span>
-                    <del class="font-weight-light small">160000đ</del>
-                    <br />
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="card">
+            <div class="card-body text-left hovereffect">
+                <a href="#"><img src="~/Images/mat-biec-phien-ban-phim.jpg" class="img-fluid" /></a>
+                <p class="card-text title small">Some text inside the first card</p>
+                <span class="text-truncate font-weight-bold current-price">140000đ</span>
+                <del class="font-weight-light small">160000đ</del>
+                <br />
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
             </div>
         </div>
-</div>
+    </div>
+</div>*@
 @*<div class="row mt-2">
         <div class="col-lg-3 col-md-3 col-sm-4">
             <div class="card">

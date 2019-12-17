@@ -1,4 +1,5 @@
-﻿
+﻿@model MyBookStore.ViewModels.BookViewModel
+@using MyBookStore.ViewModels
 @{
     ViewBag.Title = "Chi tiết";
     <link href="~/Scripts/mycss/detailbook.css" rel="stylesheet" />
@@ -10,11 +11,11 @@
         <img src="~/Images/khong-so-hai.jpg" class="img-fluid border pt-3 pb-3" />
     </div>
     <div class="col-lg-8 info-book">
-        <strong class="">Tên sách ở đây nè</strong>
+        <strong class="">@Model.Title</strong>
         <hr />
-        <label>Trạng thái: Còn hàng</label><br />
+        <label>Trạng thái: @{var status = Model.Quantity > 0 ? "Còn hàng" : "Hết hàng";}@status</label><br />
         <label>Tác giả: Tên tác giả ở đây</label><br />
-        <label>Giá: <span class="price font-weight-bold">160000đ</span></label><br />
+        <label>Giá: <span class="price font-weight-bold">@Model.Price</span></label><br />
         <span>Đánh giá:</span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
@@ -34,21 +35,21 @@
     <div>
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#home">Mô tả sách</a>
+                <a class="nav-link active" data-toggle="tab" href="#description">Mô tả sách</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu1">Bình luận</a>
+                <a class="nav-link" data-toggle="tab" href="#comment">Bình luận</a>
             </li>
         </ul>
         <div class="tab-content">
-            <div id="home" class="container tab-pane active">
+            <div id="description" class="container tab-pane active">
                 <br>
-                <h3>HOME</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h5>@Model.Title</h5>
+                <p>@Model.Description</p>
             </div>
-            <div id="menu1" class="container tab-pane fade">
+            <div id="comment" class="container tab-pane fade">
                 <br>
-                <h3>Menu 1</h3>
+                <h3>Bình luận</h3>
                 <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
         </div>
@@ -64,63 +65,78 @@
     <div class="row">
         <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
             <div class="MultiCarousel-inner">
-                <div class="item">
-                    <div class="pad15">
-                        <img src="~/Images/khong-so-hai.jpg" class="img-thumbnail" />
-                        <p class="card-text title small">Some text inside the first card</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <img src="~/Images/khong-so-hai.jpg" class="img-thumbnail" />
-                        <p class="card-text title small">Some text inside the first card</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <img src="~/Images/khong-so-hai.jpg" class="img-thumbnail" />
-                        <p class="card-text title small">Some text inside the first card</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <img src="~/Images/mat-biec-phien-ban-phim.jpg" class="img-thumbnail" />
-                        <p class="card-text title small">Some text inside the first card</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <img src="~/Images/suy-tuong.jpg" class="img-thumbnail" />
-                        <p class="card-text title small">Some text inside the first card</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <img src="~/Images/the-diem-can-bang-bien-chien-luoc-thanh-hanh-dong.jpg" class="img-thumbnail" />
-                        <p class="card-text title small">Some text inside the first card</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <img src="~/Images/tri-thuc-ve-van-vat.jpg" class="img-thumbnail" />
-                        <p class="card-text title small">Some text inside the first card</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pad15">
-                        <img src="~/Images/trieu-phu-bat-dong-san-tu-than-dinh-huong-dau-tu-mua-dau-lai-do.png" class="img-thumbnail" />
-                        <p class="card-text title small">Some text inside the first card</p>
-                    </div>
-                </div>
+                @{
+                    List<BookViewModel> sameTypeBooks = ViewBag.SameTypeBooks as List<BookViewModel>;
+                    if (sameTypeBooks.Count > 0)
+                    {
+                        foreach (var item in sameTypeBooks)
+                        {
+                            <div class="item">
+                                <div class="pad15">
+                                    <a href="@Url.Action("Detail","Book",new { id=item.Id})"><img src="/@item.ImagePath" class="img-thumbnail" /></a>
+                                    <p class="card-text title small">@item.Title</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <h5>Không có sách liên quan</h5>
+                    }
+
+                }
 
                 @*<div class="item">
-                        <div class="pad15">
-                            <p class="lead">Multi Item Carousel</p>
-                            <p>₹ 1</p>
-                            <p>₹ 6000</p>
-                            <p>50% off</p>
-                        </div>
-                    </div>*@
+            <div class="pad15">
+                <img src="~/Images/khong-so-hai.jpg" class="img-thumbnail" />
+                <p class="card-text title small">Some text inside the first card</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="pad15">
+                <img src="~/Images/khong-so-hai.jpg" class="img-thumbnail" />
+                <p class="card-text title small">Some text inside the first card</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="pad15">
+                <img src="~/Images/mat-biec-phien-ban-phim.jpg" class="img-thumbnail" />
+                <p class="card-text title small">Some text inside the first card</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="pad15">
+                <img src="~/Images/suy-tuong.jpg" class="img-thumbnail" />
+                <p class="card-text title small">Some text inside the first card</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="pad15">
+                <img src="~/Images/the-diem-can-bang-bien-chien-luoc-thanh-hanh-dong.jpg" class="img-thumbnail" />
+                <p class="card-text title small">Some text inside the first card</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="pad15">
+                <img src="~/Images/tri-thuc-ve-van-vat.jpg" class="img-thumbnail" />
+                <p class="card-text title small">Some text inside the first card</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="pad15">
+                <img src="~/Images/trieu-phu-bat-dong-san-tu-than-dinh-huong-dau-tu-mua-dau-lai-do.png" class="img-thumbnail" />
+                <p class="card-text title small">Some text inside the first card</p>
+            </div>
+        </div>*@
+
+                @*<div class="item">
+            <div class="pad15">
+                <p class="lead">Multi Item Carousel</p>
+                <p>₹ 1</p>
+                <p>₹ 6000</p>
+                <p>50% off</p>
+            </div>
+        </div>*@
             </div>
             <button class="btn btn-primary leftLst"><</button>
             <button class="btn btn-primary rightLst">></button>
