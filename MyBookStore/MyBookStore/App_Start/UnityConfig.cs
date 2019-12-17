@@ -23,6 +23,7 @@ namespace MyBookStore
             container.RegisterType<IRoleRepository, RoleRepository>();
             container.RegisterType<IBookTypeRepository, BookTypeRepository>();
             container.RegisterType<IBookRepository, BookRepository>();
+            container.RegisterType<IAuthorRepository, AuthorRepository>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

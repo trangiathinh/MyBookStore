@@ -19,13 +19,15 @@ namespace MyBookStore.Repository
 
         public IBookTypeRepository BookTypeRepository { get; }
 
+        public IAuthorRepository AuthorRepository { get; }
+
         public UnitOfWork(MyBookStoreContext context,
                           IAccountRepository accountRepository,
                           IRoleRepository roleRepository,
                           ICustomerRepository customerRepository,
                           IBookTypeRepository bookTypeRepository,
-                          IBookRepository bookRepository
-                          )
+                          IBookRepository bookRepository,
+                          IAuthorRepository authorRepository)
         {
             Context = context;
             this.AccountRepository = accountRepository;
@@ -33,6 +35,7 @@ namespace MyBookStore.Repository
             this.CustomerRepository = customerRepository;
             this.BookTypeRepository = bookTypeRepository;
             this.BookRepository = bookRepository;
+            this.AuthorRepository = authorRepository;
         }
         private bool disposed = false;
         public void Dispose(bool disposing)

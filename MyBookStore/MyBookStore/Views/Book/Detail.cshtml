@@ -1,5 +1,6 @@
 ﻿@model MyBookStore.ViewModels.BookViewModel
 @using MyBookStore.ViewModels
+@using System.Text
 @{
     ViewBag.Title = "Chi tiết";
     <link href="~/Scripts/mycss/detailbook.css" rel="stylesheet" />
@@ -8,13 +9,21 @@
 <hr />
 <div class="row">
     <div class="col-lg-4 image-book">
-        <img src="~/Images/khong-so-hai.jpg" class="img-fluid border pt-3 pb-3" />
+        <img src="/@Model.ImagePath" class="img-fluid border pt-3 pb-3" />
     </div>
     <div class="col-lg-8 info-book">
         <strong class="">@Model.Title</strong>
         <hr />
         <label>Trạng thái: @{var status = Model.Quantity > 0 ? "Còn hàng" : "Hết hàng";}@status</label><br />
-        <label>Tác giả: Tên tác giả ở đây</label><br />
+        @{ 
+            StringBuilder authorsStr = new StringBuilder();
+            foreach(var item in ViewBag.Authors)
+            {
+                authorsStr.Append(item.Name + ", ");
+            }
+            authorsStr.Remove(authorsStr.Length - 2, 1);
+        }
+        <label>Tác giả: @{@authorsStr.ToString()}</label><br />
         <label>Giá: <span class="price font-weight-bold">@Model.Price</span></label><br />
         <span>Đánh giá:</span>
         <span class="fa fa-star checked"></span>
@@ -24,7 +33,7 @@
         <span class="fa fa-star"></span>
         <br />
         <span>Số lượng:</span>
-        <input class="btn btn-default border" style="width:16%;" min="1" max="100" type="number" />
+        <input class="btn btn-default border" style="width:16%;" min="1" max="@Model.Quantity" type="number" />
         <br />
         <button class="btn btn-success mt-2 pt-3 pb-3">Thêm vào giỏ hàng</button>
     </div>
@@ -32,7 +41,7 @@
 <h1 class="mt-5"></h1>
 <div class="row description-and-comment">
     <hr />
-    <div>
+    <div class="col-lg-12">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#description">Mô tả sách</a>
@@ -42,15 +51,35 @@
             </li>
         </ul>
         <div class="tab-content">
-            <div id="description" class="container tab-pane active">
+            <div id="description" class="container border tab-pane active">
                 <br>
                 <h5>@Model.Title</h5>
                 <p>@Model.Description</p>
             </div>
-            <div id="comment" class="container tab-pane fade">
+            <div id="comment" class="container tab-pane fade border">
                 <br>
-                <h3>Bình luận</h3>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <span>Đánh giá:&nbsp;</span>
+                        <span class="rating">&#9734</span>
+                        <span class="rating">&#9734</span>
+                        <span class="rating">&#9734</span>
+                        <span class="rating">&#9734</span>
+                        <span class="rating">&#9734</span>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="col-lg-12">
+                        <strong>Tin nhắn của bạn</strong>
+                        <textarea class="form-control" rows="5"></textarea>
+                    </div>
+                    
+                    <div class="col-lg-12 mt-2 mb-3">
+                        <button class="btn btn-primary col-lg-2">Gửi</button>
+                        <button class="btn btn-light ml-3">Xem bình luận về sản phẩm</button>
+                    </div>
+                </div>
+                @*<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>*@
             </div>
         </div>
     </div>
@@ -74,7 +103,7 @@
                             <div class="item">
                                 <div class="pad15">
                                     <a href="@Url.Action("Detail","Book",new { id=item.Id})"><img src="/@item.ImagePath" class="img-thumbnail" /></a>
-                                    <p class="card-text title small">@item.Title</p>
+                                    <p class="card-text title small related-title">@item.Title</p>
                                 </div>
                             </div>
                         }

@@ -12,6 +12,7 @@ namespace MyBookStore.Repository
         IRoleRepository RoleRepository { get; }
         ICustomerRepository CustomerRepository { get; }
         IBookTypeRepository BookTypeRepository { get; }
+        IAuthorRepository AuthorRepository { get; }
         MyBookStoreContext Context { get; }
         void Save();
     }

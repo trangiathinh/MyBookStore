@@ -57,6 +57,20 @@ namespace MyBookStore.Controllers
                 StarsAverage = b.StarsAverage,
                 Description = b.Description,
             }).FirstOrDefault();
+            //get authors by book id
+            var authors = unitOfWork.AuthorRepository.GetAuthorsByBookId(book.Id).Select(a=>new AuthorViewModel
+            {
+                Id=a.Id,
+                Name=a.Name,
+                PhoneNumber=a.PhoneNumber,
+                Email=a.Email,
+                Address=a.Address,
+                Birthday=a.Birthday,
+                CreatedDate=a.CreatedDate
+            });
+            //save in ViewBag
+            ViewBag.Authors = authors;
+            //get books which are the same type
             var sameTypeBooks = unitOfWork.BookRepository.Get(b => b.BookTypeId == book.BookTypeId).Select(b=>new BookViewModel
             {
                 Id = b.Id,
