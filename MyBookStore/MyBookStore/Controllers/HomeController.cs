@@ -14,6 +14,7 @@ namespace MyBookStore.Controllers
         [Route("~/",Name ="Default")]
         public ActionResult Index()
         {
+            ViewBag.TitlePage = "Trang chủ";
             return View();
         }
         [Authorize]

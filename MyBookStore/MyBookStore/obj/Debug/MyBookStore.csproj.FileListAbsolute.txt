@@ -326,6 +326,8 @@ C:\BookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csproj.CoreCompileInp
 C:\BookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csproj.CopyComplete
 C:\BookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.dll
 C:\BookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.pdb
+C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csprojAssemblyReference.cache
+C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csproj.CoreCompileInputs.cache
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\MyBookStore.dll.config
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\MyBookStore.dll
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\MyBookStore.pdb
@@ -509,8 +511,6 @@ C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\pt-BR\Microsoft.Data
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\ru\Microsoft.Data.SqlClient.resources.dll
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\zh-Hant\Microsoft.Data.SqlClient.resources.dll
-C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csprojAssemblyReference.cache
-C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csproj.CoreCompileInputs.cache
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csproj.CopyComplete
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.dll
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.pdb

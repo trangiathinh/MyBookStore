@@ -15,9 +15,9 @@ namespace MyBookStore.ViewModels
 
         [Display(Name ="Mật khẩu")]
         [DataType(DataType.Password)]
-        [Required(ErrorMessage ="Mật khẩu không được rỗng",AllowEmptyStrings =false),
-        MinLength(8,ErrorMessage ="Mật khẩu phải chứa ít nhất 8 ký tự"),
-        MaxLength(20, ErrorMessage ="Mật khẩu không được quá 20 ký tự")]
+        //[Required(ErrorMessage ="Mật khẩu không được rỗng",AllowEmptyStrings =false),
+        //MinLength(8,ErrorMessage ="Mật khẩu phải chứa ít nhất 8 ký tự"),
+        //MaxLength(20, ErrorMessage ="Mật khẩu không được quá 20 ký tự")]
         public string Password { get; set; }
         [Display(Name ="Remember me?")]
         public bool RememberMe { get; set; } = false;

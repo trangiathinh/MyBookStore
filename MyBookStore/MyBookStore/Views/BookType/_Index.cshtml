@@ -11,7 +11,7 @@
                         {
                             <!-- Links -->
                             <li class="nav-item">
-                                <a class="nav-link" href="#">@item.BookTypeName</a>
+                                <a class="nav-link" href="@Url.Action("Index","Book",new { bookTypeId=item.Id})">@item.BookTypeName</a>
                             </li>
                             @*<li class="nav-item">
                                 <a class="nav-link" href="#">Sách kinh tế - tài chính</a>

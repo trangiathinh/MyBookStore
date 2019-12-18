@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - MyBookStore</title>
+    <title>@ViewBag.TitlePage - MyBookStore</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -75,7 +75,7 @@
                     </li>
                     <li class="nav-item navbar-collapse ml-4">
                         <span class="fa fa-shopping-cart"></span>
-                        <a class="nav-link" href="#">Giỏ hàng</a>
+                        <a class="nav-link" href="@Url.Action("Index","ShoppingCart")">Giỏ hàng</a>
                     </li>
                 </ul>
 

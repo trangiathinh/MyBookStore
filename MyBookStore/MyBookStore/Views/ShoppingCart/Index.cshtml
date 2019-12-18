@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.TitlePage = ViewBag.Title;
+}
+<strong>@ViewBag.Title của bạn (3 sản phẩm)</strong>
+<hr />
+<div class="">
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <td>
+                    <img src="~/Images/100-y-tuong-kinh-doanh-tuyet-hay-tai-ban.jpeg"
+                         alt="100 Ý tưởng kinh doanh tuyệt hay tái bản" class="img-fluid" width="60" height="60" />
+                </td>
+                <td>100 Ý tưởng kinh doanh tuyệt hay tái bản</td>
+                <td class="pt-3">200000<span>đ</span></td>
+                <td>
+                    <input type="number" class="btn btn-default border btn-block ml-3" style="max-width:40%;" value="1" min="1" />
+                </td>
+                <td class="pt-3 pl-0 ml-0">200000<span>đ</span></td>
+                <td>
+                    <button class="btn btn-danger">Xóa</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="~/Images/100-y-tuong-kinh-doanh-tuyet-hay-tai-ban.jpeg"
+                         alt="100 Ý tưởng kinh doanh tuyệt hay tái bản" class="img-fluid" width="60" height="60" />
+                </td>
+                <td>100 Ý tưởng kinh doanh tuyệt hay tái bản</td>
+                <td class="pt-3">200000<span>đ</span></td>
+                <td>
+                    <input type="number" class="btn btn-default border btn-block ml-3" style="max-width:40%;" value="1" min="1" />
+                </td>
+                <td class="pt-3 pl-0 ml-0">200000<span>đ</span></td>
+                <td>
+                    <button class="btn btn-danger">Xóa</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr />
+    <div class="row">
+        <div class="col-lg-4">Tổng tiền đơn hàng: 1200000<span>đ</span></div>
+        <div class="col-lg-7">
+            <div class="row">
+                <button class="btn btn-success col-lg-4">Đặt hàng</button>
+                <a href="@Url.Action("Index","Book")" class="btn btn-info col-lg-5 ml-2">Tiếp tục mua hàng</a>
+            </div>
+        </div>
+        
+    </div>
+</div>
+

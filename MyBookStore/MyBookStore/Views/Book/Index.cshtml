@@ -1,11 +1,11 @@
 ﻿@model List<MyBookStore.ViewModels.BookViewModel>
 @using MyBookStore.ViewModels
 @{
-    ViewBag.Title = "Index";
+    ViewBag.TitlePage = ViewBag.Title ;
 }
 
 @*<div class="col-lg-9">*@
-<strong>Sản phẩm nổi bật</strong>
+<strong>@ViewBag.Title</strong>
 <hr />
 @{
     int rows = (int)Math.Ceiling(Model.Count * 1.0 / 4);

@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Khôi phục mật khẩu</title>
+    <title>@ViewBag.Title - MyBookStore</title>
 </head>
 <body>
     
@@ -17,7 +17,7 @@
     {
         @Html.AntiForgeryToken()
         <div class="form-horizontal">
-            <h4>Khôi phục mật khẩu</h4>
+            <strong>@ViewBag.Title</strong>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">

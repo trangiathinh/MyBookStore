@@ -2,10 +2,14 @@
 @using MyBookStore.ViewModels
 @using System.Text
 @{
-    ViewBag.Title = "Chi tiết";
+    ViewBag.TitlePage = ViewBag.Title;
     <link href="~/Scripts/mycss/detailbook.css" rel="stylesheet" />
 }
-<strong>Chi tiết sách</strong>
+@if (TempData["Message"] != null)
+{
+    <h5 class="alert alert-dismissible alert-success">@TempData["Message"]</h5>
+}
+<strong>@ViewBag.Title</strong>
 <hr />
 <div class="row">
     <div class="col-lg-4 image-book">
@@ -24,7 +28,7 @@
             authorsStr.Remove(authorsStr.Length - 2, 1);
         }
         <label>Tác giả: @{@authorsStr.ToString()}</label><br />
-        <label>Giá: <span class="price font-weight-bold">@Model.Price</span></label><br />
+        <label>Giá: <span class="price font-weight-bold">@Model.Price<span>đ</span></span></label><br />
         <span>Đánh giá:</span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
@@ -35,7 +39,7 @@
         <span>Số lượng:</span>
         <input class="btn btn-default border" style="width:16%;" min="1" max="@Model.Quantity" type="number" />
         <br />
-        <button class="btn btn-success mt-2 pt-3 pb-3">Thêm vào giỏ hàng</button>
+        <a class="btn btn-success mt-2 pt-3 pb-3" id="add-to-shopping-cart" href="@Url.Action("AddToCart","ShoppingCart",new {bookId=Model.Id})">Thêm vào giỏ hàng</a>
     </div>
 </div>
 <h1 class="mt-5"></h1>
@@ -102,7 +106,7 @@
                         {
                             <div class="item">
                                 <div class="pad15">
-                                    <a href="@Url.Action("Detail","Book",new { id=item.Id})"><img src="/@item.ImagePath" class="img-thumbnail" /></a>
+                                    <a href="@Url.Action("Detail","Book",new { id=item.Id})"><img src="/@item.ImagePath" class="img-thumbnail" style="max-height:95.25px;" /></a>
                                     <p class="card-text title small related-title">@item.Title</p>
                                 </div>
                             </div>

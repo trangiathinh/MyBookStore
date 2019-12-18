@@ -1,4 +1,5 @@
-﻿using MyBookStore.Repository;
+﻿using Microsoft.EntityFrameworkCore;
+using MyBookStore.Repository;
 using MyBookStore.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -20,24 +21,50 @@ namespace MyBookStore.Controllers
         }
         // GET: Book
         [Route()]
-        public ActionResult Index()
+        public ActionResult Index(string bookTypeId="")
         {
-            var listBook = unitOfWork.BookRepository.Get().Select(b => new BookViewModel
+            IQueryable<BookViewModel> query = unitOfWork.BookRepository.Get().Select(b => new BookViewModel
             {
-                Id=b.Id,
-                IdPublisher=b.IdPublisher,
-                BookTypeId=b.BookTypeId,
-                Title=b.Title,
-                ImagePath=b.ImagePath,
-                Quantity=b.Quantity,
-                Price=b.Price,
-                DiscountPrice=b.DiscountPrice,
-                NumberPages=b.NumberPages,
-                PublishDate=b.PublishDate,
-                StarsAverage=b.StarsAverage,
-                Description=b.Description
-            }).ToList();
-            return View("Index", listBook);
+                Id = b.Id,
+                IdPublisher = b.IdPublisher,
+                BookTypeId = b.BookTypeId,
+                Title = b.Title,
+                ImagePath = b.ImagePath,
+                Quantity = b.Quantity,
+                Price = b.Price,
+                DiscountPrice = b.DiscountPrice,
+                NumberPages = b.NumberPages,
+                PublishDate = b.PublishDate,
+                StarsAverage = b.StarsAverage,
+                Description = b.Description
+            }).AsQueryable();
+            string bookTypeName = "";
+            if (!(bookTypeId == ""))
+            {
+                query = query.Where(book => book.BookTypeId == new Guid(bookTypeId)) ;
+                var bookType = unitOfWork.BookTypeRepository.Get(bt => bt.Id == new Guid(bookTypeId)).FirstOrDefault();
+                if (bookType != null)
+                {
+                    bookTypeName = bookType.BookTypeName;
+                }
+            }
+            //var listBook = unitOfWork.BookRepository.Get().Select(b => new BookViewModel
+            //{
+            //    Id=b.Id,
+            //    IdPublisher=b.IdPublisher,
+            //    BookTypeId=b.BookTypeId,
+            //    Title=b.Title,
+            //    ImagePath=b.ImagePath,
+            //    Quantity=b.Quantity,
+            //    Price=b.Price,
+            //    DiscountPrice=b.DiscountPrice,
+            //    NumberPages=b.NumberPages,
+            //    PublishDate=b.PublishDate,
+            //    StarsAverage=b.StarsAverage,
+            //    Description=b.Description
+            //}).ToList();
+            ViewBag.Title = bookTypeName != "" ? bookTypeName : "Sản phẩm nổi bật";
+            return View("Index", query.ToList());
         }
         [Route("detail/{id}")]
         public ActionResult Detail(string id)
@@ -87,6 +114,7 @@ namespace MyBookStore.Controllers
                 Description = b.Description
             }).ToList();
             ViewBag.SameTypeBooks = sameTypeBooks;
+            ViewBag.Title = "Chi tiết sách";
             return View(book);
         }
 

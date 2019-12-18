@@ -29,6 +29,7 @@ namespace MyBookStore.Controllers
         [HttpGet, Route("login")]
         public ViewResult Login()
         {
+            ViewBag.Title = "Đăng nhập tài khoản";
             return View();
         }
 
@@ -63,11 +64,13 @@ namespace MyBookStore.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Email hoặc mật khẩu không chính xác hoặc tài khoản chưa được kích hoạt!");
+                    ViewBag.Title = "Đăng nhập tài khoản";
                     return View(model);
                 }
             }
             else
             {
+                ViewBag.Title = "Đăng nhập tài khoản";
                 return View(model);
             }
         }
@@ -81,6 +84,7 @@ namespace MyBookStore.Controllers
         [Route("register")]
         public ActionResult Register()
         {
+            ViewBag.Title = "Đăng ký tài khoản";
             return View();
         }
         [HttpPost]
@@ -94,6 +98,7 @@ namespace MyBookStore.Controllers
                 if (!unitOfWork.AccountRepository.IsUniqueEmail(model.Email))
                 {
                     ModelState.AddModelError("EmailExist", "Email already exist!");
+                    ViewBag.Title = "Đăng ký tài khoản";
                     return View(model);
                 }
                 //create customer
@@ -135,6 +140,7 @@ namespace MyBookStore.Controllers
                     catch (Exception ex)
                     {
                         ModelState.AddModelError("Error", "Error occured!");
+                        ViewBag.Title = "Đăng ký tài khoản";
                         transaction.Rollback();
                         return View(model);
                     }
@@ -149,10 +155,15 @@ namespace MyBookStore.Controllers
                 catch(Exception ex)
                 {
                     ViewBag.Error = "Error while sending email!";
+                    ViewBag.Title = "Đăng ký tài khoản";
                     return View("Error");
                 }
                 return RedirectToAction("Login", "Account");
 
+            }
+            else
+            {
+                ViewBag.Title = "Đăng ký tài khoản";
             }
             return View(model);
         }
@@ -240,6 +251,7 @@ namespace MyBookStore.Controllers
         [Route("forgot-password")]
         public ActionResult ForgotPassword()
         {
+            ViewBag.Title = "Quên mật khẩu";
             return View();
         }
         [HttpPost]
@@ -258,14 +270,22 @@ namespace MyBookStore.Controllers
                     }
                     catch(Exception ex)
                     {
-
+                        ViewBag.Title = "Quên mật khẩu";
                     }
                 }
                 else
                 {
+                    ViewBag.Title = "Quên mật khẩu";
                     ModelState.AddModelError("IncorrectEmail", "Email không phải email đăng ký tài khoản!");
+                    return View(model);
                 }
             }
+            else
+            {
+                ViewBag.Title = "Quên mật khẩu";
+                return View(model);
+            }
+            TempData["Message"] = "Vui lòng kiểm tra email để khôi phục tài khoản";
             return View(model);
         }
         [Route("recovery-account/{id}")]
@@ -274,6 +294,7 @@ namespace MyBookStore.Controllers
             var account = unitOfWork.AccountRepository.GetById(new Guid(id));
             if (account != null)
             {
+                ViewBag.Title = "Khôi phục tài khoản";
                 return View();
             }
             ViewBag.Error = "Không tồn tại tài khoản!";
@@ -284,25 +305,34 @@ namespace MyBookStore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RecoveryAccount(string id, RecoveryAccountViewModel model)
         {
-            var account = unitOfWork.AccountRepository.GetById(new Guid(id));
-            if (account != null)
+            ViewBag.Title = "Kết quả";
+            if (ModelState.IsValid)
             {
-                account.PasswordHash = Crypto.SHA256(model.Password + account.Salt);
-                try
+                var account = unitOfWork.AccountRepository.GetById(new Guid(id));
+                if (account != null)
                 {
-                    unitOfWork.AccountRepository.Update(account);
-                    unitOfWork.Save();
-                    ViewBag.Status = true;
-                    return View("RecoveryAccountResult");
+                    account.PasswordHash = Crypto.SHA256(model.Password + account.Salt);
+                    try
+                    {
+                        unitOfWork.AccountRepository.Update(account);
+                        unitOfWork.Save();
+                        ViewBag.Status = true;
+                        return View("RecoveryAccountResult");
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewBag.Status = false;
+                        return View("RecoveryAccountResult");
+                    }
                 }
-                catch(Exception ex)
-                {
-                    ViewBag.Status = false;
-                    return View("RecoveryAccountResult");
-                }
+                ViewBag.Error = "Không tồn tại tài khoản!";
+                return View("Error");
             }
-            ViewBag.Error = "Không tồn tại tài khoản!";
-            return View("Error");
+            else
+            {
+                return View();
+            }
+            
         }
     }
 

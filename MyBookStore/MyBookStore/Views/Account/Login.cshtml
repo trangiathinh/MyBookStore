@@ -1,10 +1,10 @@
 ﻿@model MyBookStore.ViewModels.LoginViewModel
 
 @{
-    ViewBag.Title = "Đăng nhập tài khoản";
+    ViewBag.TitlePage = ViewBag.Title;
 }
 
-<h4>Đăng nhập</h4>
+<strong>@ViewBag.Title</strong>
 
 @using (Html.BeginForm())
 {
@@ -48,10 +48,6 @@
     </div>
 
 }
-
-
-
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
