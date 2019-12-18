@@ -22,11 +22,19 @@ namespace MyBookStore.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Giỏ hàng";
-            return View();
+            if (Session["ShoppingCart"] != null)
+            {
+                //var listItems = GetShoppingCart().CartItems;
+                //return View(listItems);
+                return View(Session["ShoppingCart"] as ShoppingCart);
+            }
+            ViewBag.Message = "Bạn chưa có sản phẩm nào trong giỏ hàng!";
+            return View(new ShoppingCart());
         }
         [Route("add-to-card/{bookId}/{quantity}")]
-        public ActionResult AddToCart(string bookId, int quantity = 1)
+        public string AddToCart(string bookId, int quantity = 1)
         {
+            string message = "";
             BookViewModel bookViewModel = unitOfWork.BookRepository.Get(book => book.Id == new Guid(bookId)).
                 Select(book => new BookViewModel
                 {
@@ -34,20 +42,34 @@ namespace MyBookStore.Controllers
                     Title = book.Title,
                     Price = book.Price,
                     DiscountPrice = book.DiscountPrice,
+                    Quantity=book.Quantity,
                     ImagePath = book.ImagePath
                 }).FirstOrDefault();
             if (bookViewModel != null)
             {
                 GetShoppingCart().AddItem(bookViewModel, quantity);
-                TempData["Message"] = "Sản phẩm đã được thêm vào giỏ hàng!";
+                message = "Sản phẩm đã được thêm vào giỏ hàng!";
             }
-            return RedirectToAction("Detail", "Book", new { id = bookId });
+            return message;
+        }
+        [Route("remove-from-cart/{bookId}")]
+        public void RemoveCartItem(string bookId)
+        {
+            GetShoppingCart().RemoveItem(new Guid(bookId));
+            
+        }
+        [Route("update-from-cart/{bookId}/{quantity}")]
+        public void UpdateCartItem(string bookId, int quantity)
+        {
+            GetShoppingCart().UpdateCartItem(new Guid(bookId), quantity);
         }
         private ShoppingCart GetShoppingCart()
         {
             if (Session["ShoppingCart"] == null)
             {
-                return new ShoppingCart();
+                ShoppingCart shoppingCart= new ShoppingCart();
+                Session["ShoppingCart"] = shoppingCart;
+                return shoppingCart;
             }
             else
             {

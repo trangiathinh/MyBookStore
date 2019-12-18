@@ -103,4 +103,29 @@
         ResCarousel(ell, Parent, slide);
     }
 
+    //add to cart on click
+    $('#add-to-shopping-cart').on("click", function (e) {
+        e.preventDefault();
+        let bookId = $('#book-id').text();
+        let quantity = $('#quantity').val();
+        //call ajax
+        $.ajax({
+            url: '/customer/shopping-cart/add-to-card/' + bookId + '/' + quantity,
+            method: 'GET',
+            success: function (response) {
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        }).done(function (data) {
+            console.log(data);
+            $('#message').text(data);
+            $('#message-div').removeClass('d-none');
+            setTimeout(function () {
+                $('#message-div').addClass('d-none');
+            }, 3000);
+            
+        });
+    });
+
 });

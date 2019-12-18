@@ -426,7 +426,9 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\mycss\detailbook.css" />
     <Content Include="Scripts\mycss\main.css" />
+    <Content Include="Scripts\mycss\shoppingcart.css" />
     <Content Include="Scripts\myjs\detailbook.js" />
+    <Content Include="Scripts\myjs\shoppingcart.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />

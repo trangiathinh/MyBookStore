@@ -8,7 +8,11 @@ namespace MyBookStore.Models
 {
     public class ShoppingCart
     {
-        private List<CartItemViewModel> CartItems { get; }
+        public List<CartItemViewModel> CartItems { get; }
+        public ShoppingCart()
+        {
+            CartItems = new List<CartItemViewModel>();
+        }
         public void AddItem(BookViewModel book, int quantity)
         {
             //check if list item already contains book
@@ -25,13 +29,25 @@ namespace MyBookStore.Models
             }
 
         }
-        public void RemoveItem(Guid idBook)
+        public void RemoveItem(Guid bookId)
         {
-            CartItems.RemoveAll(item => item.BookItem.Id == idBook);
+            CartItems.RemoveAll(item => item.BookItem.Id == bookId);
         }
         public void ClearCartItems()
         {
             CartItems.Clear();
+        }
+        public void UpdateCartItem(Guid bookId,int quantity)
+        {
+            CartItemViewModel cartItem = CartItems.Where(c => c.BookItem.Id == bookId).FirstOrDefault();
+            if (cartItem != null)
+            {
+                cartItem.Quantity = quantity;
+            }
+        }
+        public double CalculateTotalPrice()
+        {
+            return CartItems.Sum(item => item.BookItem.Price * item.Quantity);
         }
     }
 }

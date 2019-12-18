@@ -5,10 +5,13 @@
     ViewBag.TitlePage = ViewBag.Title;
     <link href="~/Scripts/mycss/detailbook.css" rel="stylesheet" />
 }
-@if (TempData["Message"] != null)
-{
-    <h5 class="alert alert-dismissible alert-success">@TempData["Message"]</h5>
-}
+@*@if (TempData["Message"] != null)
+{*@
+<div class="alert alert-info alert-dismissible d-none" id="message-div">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h5 id="message"></h5>
+</div>
+@*}*@
 <strong>@ViewBag.Title</strong>
 <hr />
 <div class="row">
@@ -16,6 +19,7 @@
         <img src="/@Model.ImagePath" class="img-fluid border pt-3 pb-3" />
     </div>
     <div class="col-lg-8 info-book">
+        <label class="text-hide" id="book-id">@Model.Id</label>
         <strong class="">@Model.Title</strong>
         <hr />
         <label>Trạng thái: @{var status = Model.Quantity > 0 ? "Còn hàng" : "Hết hàng";}@status</label><br />
@@ -37,9 +41,9 @@
         <span class="fa fa-star"></span>
         <br />
         <span>Số lượng:</span>
-        <input class="btn btn-default border" style="width:16%;" min="1" max="@Model.Quantity" type="number" />
+        <input class="btn btn-default border" style="width:16%;" value="1" min="1" max="@Model.Quantity" id="quantity" type="number" />
         <br />
-        <a class="btn btn-success mt-2 pt-3 pb-3" id="add-to-shopping-cart" href="@Url.Action("AddToCart","ShoppingCart",new {bookId=Model.Id})">Thêm vào giỏ hàng</a>
+        <button class="btn btn-success mt-2 pt-3 pb-3" id="add-to-shopping-cart">Thêm vào giỏ hàng</button>
     </div>
 </div>
 <h1 class="mt-5"></h1>
