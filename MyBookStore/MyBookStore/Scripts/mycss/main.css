@@ -53,3 +53,11 @@
         -webkit-transition-delay: .2s;
         transition-delay: .2s;
     }
+
+#navbarDropdown{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

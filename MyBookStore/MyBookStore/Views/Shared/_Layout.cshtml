@@ -41,20 +41,27 @@
                 <!--Search text box-->
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Bạn muốn tìm gì?" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0">Tìm</button>
                 </form>
                 <!--Account and Shopping cart -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
                         @{ 
                             string message = "Tài khoản";
+                            string shortMessage = "";
                             if (HttpContext.Current.Request.IsAuthenticated)
                             {
                                 message = "Xin chào, " + HttpContext.Current.User.Identity.Name;
+                                
+                                if (message.Length > 18)
+                                {
+                                    shortMessage  = message.Substring(0, 15);
+                                    shortMessage += "...";
+                                }
                             }
                         }
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           @message
+                        <a class="nav-link dropdown-toggle" title="@message" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           @(shortMessage!=""?shortMessage:message)
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @if (HttpContext.Current.Request.IsAuthenticated)

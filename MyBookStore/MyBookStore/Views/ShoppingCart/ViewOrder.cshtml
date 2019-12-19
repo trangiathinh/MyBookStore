@@ -1,0 +1,65 @@
+﻿@model MyBookStore.Models.ShoppingCart
+@using MyBookStore.ViewModels
+@{
+    ViewBag.TitlePage = ViewBag.Title;
+}
+
+<strong>@ViewBag.Title</strong>
+<hr />
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên sách</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CartItems)
+            {
+                <tr>
+                    <td>@item.BookItem.Title</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.BookItem.Price</td>
+                    <td>@(item.Quantity * item.BookItem.Price)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row">
+        <strong>Tổng tiền đơn hàng: @Model.CalculateTotalPrice()<span>đ</span></strong>
+    </div>
+    <div class="row mt-5">
+        @{
+            CustomerViewModel customer = ViewBag.Customer as CustomerViewModel;
+        }
+        <div class="col-lg-12">
+            <strong>
+                Thông tin giao hàng
+            </strong>
+            <hr />
+        </div>
+        <div class="col-lg-8">
+            Khách hàng: <label>@customer.Name</label><br />
+            Số điện thoại: <label>@customer.PhoneNumber</label><br />
+            Địa chỉ giao hàng: <label id="delivery">@customer.Address</label><span> &nbsp;</span><a href="#" title="Sửa địa chỉ giao hàng"><i id="edit-delivery-address"  class="fa fa-edit"></i></a>
+        </div>
+    </div>
+    <div class="row form-group mt-2 d-none" id="new-delivery-div">
+        <label class="pt-1 col-md-3">Địa chỉ giao hàng mới: </label><input type="text" class="form-control col-md-6" id="new-delivery" />
+        <button class="btn btn-primary text-bold ml-2" id="save">Lưu</button>
+        <button class="btn btn-danger border text-bold ml-2" id="cancel">Hủy</button>
+    </div>
+    <div class="row col-lg-12">
+        <button class="btn btn-primary">Xác nhận đơn hàng</button>
+    </div>
+</div>
+
+<script src="~/Scripts/myjs/vieworder.js"></script>
+
+
+
+
+

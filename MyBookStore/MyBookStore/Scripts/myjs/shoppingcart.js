@@ -22,4 +22,10 @@
             window.location.href = "/customer/shopping-cart";
         });
     });
+
+    //view order
+    $('#view-order').on("click", function (e) {
+        e.preventDefault();
+        window.location.href = '/customer/shopping-cart/view-order';
+    });
 });

@@ -44,9 +44,9 @@ namespace MyBookStore.Controllers
                 Account account = unitOfWork.AccountRepository.Login(model);
                 if (account != null && account.IsActive)
                 {
-                    int timeout = model.RememberMe ? 20 : 1;
+                    int timeout = model.RememberMe ? 20 : 10;
                     string roles = string.Join("|", account.AccountRole.ToList());
-                    var ticket = new FormsAuthenticationTicket(1, account.Customer.Name, DateTime.UtcNow, DateTime.UtcNow.AddMinutes(timeout), model.RememberMe, roles);
+                    var ticket = new FormsAuthenticationTicket(1, account.Customer.Email, DateTime.UtcNow, DateTime.UtcNow.AddMinutes(timeout), model.RememberMe, roles);
                     string encrypted = FormsAuthentication.Encrypt(ticket);
                     var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted);
                     cookie.Expires = DateTime.UtcNow.AddMinutes(timeout);
@@ -200,30 +200,8 @@ namespace MyBookStore.Controllers
 
         private void SendEmail(string email,string subject, string url, string bodyText)
         {
-            //string url = "/account/customer/verify-email/";
             string link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, url);
-            //MailAddress fromEmail = new MailAddress("trangiathinh190697@gmail.com",);
-            //string fromEmailPassword = "thinh190697";
-            //string subject = "Tài khoản của bạn đã được tạo thành công";
             MailAddress toEmail = new MailAddress(email);
-
-            //string body = 
-            //SmtpClient smtpClient = new SmtpClient
-            //{
-            //    Host = "smtp.gmail.com",
-            //    Port = 587,
-            //    EnableSsl = true,
-            //    DeliveryMethod = SmtpDeliveryMethod.Network,
-            //    UseDefaultCredentials = false,
-            //    Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
-            //};
-            //using (var message = new MailMessage(fromEmail, toEmail)
-            //{
-            //    Subject = subject,
-            //    Body = body,
-            //    IsBodyHtml = true
-            //})
-            //    smtpClient.Send(message);
             using (MailMessage mail = new MailMessage())
             {
                 mail.From = new MailAddress("trangiathinh190697@gmail.com", "Nhà sách MyBookStore");
@@ -232,8 +210,6 @@ namespace MyBookStore.Controllers
                 mail.Body = "<br/><br/>" + bodyText +
                 "<br/><br/><a href='" + link + "'>" + link + "</a>";
                 mail.IsBodyHtml = true;
-               // mail.Attachments.Add(new Attachment("C:\\file.zip"));
-
                 using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                 {
                     smtp.Credentials = new NetworkCredential("trangiathinh190697@gmail.com", "thinh190697");

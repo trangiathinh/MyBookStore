@@ -347,6 +347,7 @@
     <Compile Include="ViewModels\AuthorViewModel.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
     <Compile Include="ViewModels\CartItemViewModel.cs" />
+    <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RecoveryAccountViewModel.cs" />
@@ -429,6 +430,7 @@
     <Content Include="Scripts\mycss\shoppingcart.css" />
     <Content Include="Scripts\myjs\detailbook.js" />
     <Content Include="Scripts\myjs\shoppingcart.js" />
+    <Content Include="Scripts\myjs\vieworder.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -534,6 +536,7 @@
     <Content Include="Views\Account\RecoveryAccountResult.cshtml" />
     <Content Include="Views\Book\Detail.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\ViewOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

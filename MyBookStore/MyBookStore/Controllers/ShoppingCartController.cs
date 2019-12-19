@@ -1,4 +1,5 @@
-﻿using MyBookStore.Models;
+﻿using MyBookStore.Infrastructure;
+using MyBookStore.Models;
 using MyBookStore.Repository;
 using MyBookStore.ViewModels;
 using System;
@@ -62,6 +63,26 @@ namespace MyBookStore.Controllers
         public void UpdateCartItem(string bookId, int quantity)
         {
             GetShoppingCart().UpdateCartItem(new Guid(bookId), quantity);
+        }
+        [Route("view-order")]
+        [AreaAuthorize("Customer")]
+        public ActionResult ViewOrder()
+        {
+            ViewBag.Title = "Đơn hàng của bạn";
+            string email = HttpContext.User.Identity.Name;
+            var customer = unitOfWork.CustomerRepository.Get(c => c.Email == email).Select(c => new CustomerViewModel{
+                 Id=c.Id,
+                 Name=c.Name,
+                 Address=c.Address,
+                 BirthDate=c.BirthDate,
+                 Email= c.Email,
+                 PhoneNumber=c.Email
+            }).FirstOrDefault();
+            if (customer != null)
+            {
+                ViewBag.Customer = customer;
+            }
+            return View(GetShoppingCart());
         }
         private ShoppingCart GetShoppingCart()
         {
