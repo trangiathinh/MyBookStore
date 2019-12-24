@@ -1,4 +1,5 @@
-﻿using MyBookStore.Infrastructure;
+﻿using Microsoft.Ajax.Utilities;
+using MyBookStore.Infrastructure;
 using MyBookStore.Models;
 using MyBookStore.Repository;
 using MyBookStore.ViewModels;
@@ -76,13 +77,89 @@ namespace MyBookStore.Controllers
                  Address=c.Address,
                  BirthDate=c.BirthDate,
                  Email= c.Email,
-                 PhoneNumber=c.Email
+                 PhoneNumber=c.PhoneNumber
             }).FirstOrDefault();
             if (customer != null)
             {
                 ViewBag.Customer = customer;
             }
             return View(GetShoppingCart());
+        }
+        [Route("place-order/{deliveryAddress}")]
+        public string PlaceOrder(string deliveryAddress)
+        {
+            if (ModelState.IsValid)
+            {
+                string email = HttpContext.User.Identity.Name;
+                //create new delivery information
+                DeliveryInformation deliveryInformation = new DeliveryInformation();
+                CustomerViewModel customer = unitOfWork.CustomerRepository.Get(c => c.Email == email)
+                    .Select(c=>new CustomerViewModel {
+                        Id = c.Id,
+                        Name = c.Name,
+                        Address = c.Address,
+                        BirthDate = c.BirthDate,
+                        Email = c.Email,
+                        PhoneNumber = c.PhoneNumber
+                    }).FirstOrDefault();
+                deliveryInformation.Id = Guid.NewGuid();
+                deliveryInformation.PhoneNumber = customer.PhoneNumber;
+                deliveryInformation.ReceiverName = customer.Name;
+                deliveryInformation.DeliveryFee = 0;
+                deliveryInformation.DeliveryAddress = deliveryAddress;
+
+                //create new order object
+                Order order = new Order();
+                order.Id = Guid.NewGuid();
+                order.TotalPriceOrder = GetShoppingCart().CalculateTotalPrice();
+                order.OrderStatusId = 1;//admin not confirm yet
+                order.CreatedDate = DateTime.UtcNow;
+                order.DeliveryDate = DateTime.UtcNow.AddDays(3);
+                order.DeliveryId = deliveryInformation.Id;
+                order.CustomerId = customer.Id;
+
+                //create new list of order detail objects
+                List<OrderDetail> listOrderDetails = new List<OrderDetail>();
+                foreach (CartItemViewModel cartItem in GetShoppingCart().CartItems)
+                {
+                    OrderDetail orderDetail = new OrderDetail();
+                    orderDetail.Id = Guid.NewGuid();
+                    orderDetail.BookId = cartItem.BookItem.Id;
+                    orderDetail.OrderQuantity = cartItem.Quantity;
+                    orderDetail.TotalPrice = cartItem.BookItem.Price * cartItem.Quantity;
+                    orderDetail.OrderId = order.Id;
+                    listOrderDetails.Add(orderDetail);
+                }
+                using (var transaction = unitOfWork.Context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        //save delivery information
+                        unitOfWork.Context.DeliveryInformation.Add(deliveryInformation);
+                        //save order
+                        unitOfWork.Context.Order.Add(order);
+                        foreach (var orderDetail in listOrderDetails)
+                        {
+                            //save order detail
+                            unitOfWork.Context.OrderDetail.Add(orderDetail);
+                        }
+                        unitOfWork.Save();
+                        transaction.Commit();
+                        //clear shopping cart
+                        Session["ShoppingCart"] = null;
+                        return Url.Action("Index","Book");
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        unitOfWork.Dispose();
+                        ViewBag.Error = "Error occur while saving data";
+                        return "";
+                    }
+                }
+                
+            }
+            return "";
         }
         private ShoppingCart GetShoppingCart()
         {

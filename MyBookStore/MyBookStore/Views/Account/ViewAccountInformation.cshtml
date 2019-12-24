@@ -1,0 +1,106 @@
+﻿@model MyBookStore.ViewModels.CustomerViewModel
+    @using MyBookStore.ViewModels
+@{
+    ViewBag.TitlePage = ViewBag.Title;
+}
+
+<strong>@ViewBag.Title</strong>
+<hr />
+<div class="mb-3">
+    <div class="row">
+        <div class="col-lg-4">
+            Tên tài khoản: <span id="username">@Model.Name</span><span>&nbsp;</span><a href="#" id="edit-username" title="Sửa tên tài khoản"><i class="fa fa-edit"></i></a>
+        </div>
+        <div class="col-lg-5 d-none" id="new-username-div">
+            <input class="form-control" id="new-username" />
+        </div>
+        <div class="col-lg-3 d-none" id="new-username-btn">
+            <button class="btn btn-primary" id="save-new-username">Lưu</button>
+            <button class="btn btn-danger" id="cancel-new-username">Hủy</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            Email: <span>@Model.Email</span>
+        </div>
+    </div>
+    <div class="row mt-1">
+        <div class="col-lg-12">
+            Địa chỉ: <span id="address">@Model.Address</span><span>&nbsp;</span><a href="#" id="edit-address" title="Sửa địa chỉ"><i class="fa fa-edit"></i></a>
+        </div>
+    </div>
+    <div class="row mt-1 d-none" id="new-address-div">
+        <div class="col-lg-9">
+            <input class="form-control" id="new-address" />
+        </div>
+        <div class="col-lg-3">
+            <button class="btn btn-primary" id="save-new-address">Lưu</button>
+            <button class="btn btn-danger" id="cancel-new-address">Hủy</button>
+        </div>
+    </div>
+    <div class="row mt-1">
+        <div class="col-lg-4">
+            Số điện thoại: <span id="phonenumber">@Model.PhoneNumber</span><span>&nbsp;</span><a href="#" id="edit-phonenumber" title="Sửa số điện thoại"><i class="fa fa-edit"></i></a>
+        </div>
+        <div class="col-lg-5 d-none" id="new-phonenumber-div">
+            <input class="form-control" id="new-phonenumber"/>
+        </div>
+        <div class="col-lg-3 d-none" id="new-phonenumber-btn">
+            <button class="btn btn-primary" id="save-new-phonenumber">Lưu</button>
+            <button class="btn btn-danger" id="cancel-new-phonenumber">Hủy</button>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-primary" id="save-all">Lưu thay đổi</button>
+    </div>
+</div>
+<strong>Đơn hàng của bạn</strong>
+<hr />
+<div>
+    <table class="table">
+        <thead class="bg-info">
+            <tr>
+                <th class="small">Mã đơn hàng</th>
+                <th class="small">Ngày đặt</th>
+                <th class="small">Ngày giao</th>
+                <th class="small">Tổng tiền</th>
+                <th class="small">Trạng thái</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                List<OrderViewModel> orders = ViewBag.Orders as List<OrderViewModel>;
+            }
+            @if (orders.Count > 0)
+            {
+                foreach (var order in orders)
+                {
+                    <tr id="@order.Id">
+                        <td class="small">@order.Id</td>
+                        <td class="small">@order.CreatedDate.ToString("dd/MM/yyyy")</td>
+                        <td class="small">@order.DeliveryDate.ToString("dd/MM/yyyy")</td>
+                        <td class="small">@order.TotalPriceOrder<span>đ</span></td>
+                        <td class="small">@order.OrderStatus.Name</td>
+                        <td>
+                            <button class="btn btn-primary">Chi tiết</button>
+                            @if (order.OrderStatus.Name=="Chưa xử lý")
+                            {
+                                <button class="btn btn-danger">Hủy</button>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                   <td colspan="6">
+                       <strong>Hiện tại bạn chưa có order nào!</strong>
+                   </td> 
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="~/Scripts/myjs/viewaccountinformation.js"></script>

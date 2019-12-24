@@ -11,12 +11,14 @@ namespace MyBookStore.Models
         }
 
         public Guid Id { get; set; }
+        public Guid CustomerId { get; set; }
         public Guid DeliveryId { get; set; }
         public double TotalPriceOrder { get; set; }
         public DateTime DeliveryDate { get; set; }
         public int OrderStatusId { get; set; }
         public DateTime CreatedDate { get; set; }
 
+        public virtual Customer Customer { get; set; }
         public virtual DeliveryInformation Delivery { get; set; }
         public virtual OrderStatus OrderStatus { get; set; }
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }

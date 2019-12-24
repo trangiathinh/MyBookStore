@@ -13,6 +13,7 @@ namespace MyBookStore.Repository
         ICustomerRepository CustomerRepository { get; }
         IBookTypeRepository BookTypeRepository { get; }
         IAuthorRepository AuthorRepository { get; }
+        IOrderRepository OrderRepository { get; }
         MyBookStoreContext Context { get; }
         void Save();
     }

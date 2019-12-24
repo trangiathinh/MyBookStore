@@ -261,6 +261,12 @@ namespace MyBookStore.Models
 
                 entity.Property(e => e.DeliveryDate).HasColumnType("datetime");
 
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Order)
+                    .HasForeignKey(d => d.CustomerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Order_Customer");
+
                 entity.HasOne(d => d.Delivery)
                     .WithMany(p => p.Order)
                     .HasForeignKey(d => d.DeliveryId)

@@ -135,7 +135,7 @@ namespace MyBookStore.Controllers
                         unitOfWork.Save();
                         transaction.Commit();
                         TempData["Message"] = "Tài khoản đã được tạo thành công vui lòng kiểm tra email để kích hoạt tài khoản!";
-                       
+
                     }
                     catch (Exception ex)
                     {
@@ -149,10 +149,10 @@ namespace MyBookStore.Controllers
                 try
                 {
                     SendEmail(account.Email, "Tạo tài khoản thành công!",
-                        "/account/customer/verify-email/"+account.ActiveCode.ToString(), 
+                        "/account/customer/verify-email/" + account.ActiveCode.ToString(),
                         "Xin vui lòng click vào link bên dưới để kích hoạt tài khoản.");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     ViewBag.Error = "Error while sending email!";
                     ViewBag.Title = "Đăng ký tài khoản";
@@ -183,12 +183,12 @@ namespace MyBookStore.Controllers
                     ViewBag.Message = "Kích hoạt tài khoản thành công";
                     ViewBag.Status = status;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     ViewBag.Message = "Tài khoản không được kích hoạt";
                     ViewBag.Status = status;
                 }
-                
+
             }
             else
             {
@@ -198,7 +198,7 @@ namespace MyBookStore.Controllers
             return View();
         }
 
-        private void SendEmail(string email,string subject, string url, string bodyText)
+        private void SendEmail(string email, string subject, string url, string bodyText)
         {
             string link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, url);
             MailAddress toEmail = new MailAddress(email);
@@ -219,10 +219,37 @@ namespace MyBookStore.Controllers
             }
         }
         [Authorize]
-        [Route("show-information/{email}")]
-        public ViewResult ShowInformation(string email)
+        [Route("view-account-information")]
+        public ViewResult ViewAccountInformation()
         {
-            return View();
+            ViewBag.Title = "Thông tin tài khoản";
+            //get customer infor
+            string email = HttpContext.User.Identity.Name;
+            CustomerViewModel customer = unitOfWork.CustomerRepository.Get(c => c.Email == email)
+                    .Select(c => new CustomerViewModel
+                    {
+                        Id = c.Id,
+                        Name = c.Name,
+                        Address = c.Address,
+                        BirthDate = c.BirthDate,
+                        Email = c.Email,
+                        PhoneNumber = c.PhoneNumber
+                    }).FirstOrDefault();
+            //get order by customer id
+            List<OrderViewModel> orders = unitOfWork.OrderRepository.Get(o => o.CustomerId == customer.Id, null, "OrderDetail,OrderStatus").Select(
+                o => new OrderViewModel
+                {
+                    Id = o.Id,
+                    CustomerId = o.CustomerId,
+                    DeliveryId = o.DeliveryId,
+                    TotalPriceOrder = o.TotalPriceOrder,
+                    CreatedDate = o.CreatedDate,
+                    DeliveryDate = o.DeliveryDate,
+                    OrderDetail = o.OrderDetail,
+                    OrderStatus = o.OrderStatus
+                }).ToList();
+            ViewBag.Orders = orders;
+            return View(customer);
         }
         [Route("forgot-password")]
         public ActionResult ForgotPassword()
@@ -242,9 +269,9 @@ namespace MyBookStore.Controllers
                     //send email
                     try
                     {
-                        SendEmail(model.Email, "Khôi phục tài khoản", "/account/customer/recovery-account/"+account.Id, "Vui lòng click vào link bên dưới để khôi phục tài khoản!");
+                        SendEmail(model.Email, "Khôi phục tài khoản", "/account/customer/recovery-account/" + account.Id, "Vui lòng click vào link bên dưới để khôi phục tài khoản!");
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         ViewBag.Title = "Quên mật khẩu";
                     }
@@ -308,7 +335,7 @@ namespace MyBookStore.Controllers
             {
                 return View();
             }
-            
+
         }
     }
 

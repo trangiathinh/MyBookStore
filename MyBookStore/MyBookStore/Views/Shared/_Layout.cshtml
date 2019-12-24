@@ -46,28 +46,28 @@
                 <!--Account and Shopping cart -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
-                        @{ 
+                        @{
                             string message = "Tài khoản";
                             string shortMessage = "";
                             if (HttpContext.Current.Request.IsAuthenticated)
                             {
                                 message = "Xin chào, " + HttpContext.Current.User.Identity.Name;
-                                
+
                                 if (message.Length > 18)
                                 {
-                                    shortMessage  = message.Substring(0, 15);
+                                    shortMessage = message.Substring(0, 15);
                                     shortMessage += "...";
                                 }
                             }
                         }
                         <a class="nav-link dropdown-toggle" title="@message" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           @(shortMessage!=""?shortMessage:message)
+                            @(shortMessage != "" ? shortMessage : message)
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @if (HttpContext.Current.Request.IsAuthenticated)
                             {
                                 <a class="dropdown-item" href="@Url.Action("LogOut","Account")">Đăng xuất</a>
-                                <a class="dropdown-item" href="@Url.Action("ShowInformation","Account")">Thông tin tài khoản</a>
+                                <a class="dropdown-item" href="@Url.Action("ViewAccountInformation","Account")">Thông tin tài khoản</a>
                             }
                             else
                             {
@@ -93,73 +93,73 @@
 
     <div class="container p-4">
         <div class="row">
-           @{ 
-               Html.RenderAction("Index","BookType");
-           }
+            @{
+                Html.RenderAction("Index", "BookType");
+            }
             <div class="col-lg-9">
                 @RenderBody()
                 @*<strong>Sản phẩm nổi bật</strong>
-        <hr />
-        <div class="row mt-2">
-            <div class="col-lg-3 col-md-3 col-sm-4">
-                <div class="card">
-                    <div class="card-body text-left">
-                        <a href="#"><img src="~/Images/khong-so-hai.jpg" class="img-fluid" /></a>
-                        <p class="card-text title">Some text inside the first card</p>
-                        <span class="d-block text-truncate small">Tên Tác giả</span>
+                    <hr />
+                    <div class="row mt-2">
+                        <div class="col-lg-3 col-md-3 col-sm-4">
+                            <div class="card">
+                                <div class="card-body text-left">
+                                    <a href="#"><img src="~/Images/khong-so-hai.jpg" class="img-fluid" /></a>
+                                    <p class="card-text title">Some text inside the first card</p>
+                                    <span class="d-block text-truncate small">Tên Tác giả</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4">
+                            <div class="card">
+                                <div class="card-body text-left">
+                                    <a href="#"><img src="~/Images/the-diem-can-bang-bien-chien-luoc-thanh-hanh-dong.jpg" class="img-fluid" /></a>
+                                    <p class="card-text title">Some text inside the first card Some text inside the first card</p>
+                                    <span class="d-block text-truncate small">Tên Tác giả</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4">
+                            <div class="card">
+                                <div class="card-body text-left">
+                                    <a href="#"><img src="~/Images/suy-tuong.jpg" class="img-fluid" /></a>
+                                    <p class="card-text title">Some text inside the first card</p>
+                                    <span class="d-block text-truncate small">Tên Tác giả nha bạn Tên Tác giả nha bạn</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <div class="card">
+                                <div class="card-body text-left">
+                                    <a href="#"><img src="~/Images/mat-biec-phien-ban-phim.jpg" class="img-fluid" /></a>
+                                    <p class="card-text title">Some text inside the first card</p>
+                                    <span class="small">Tên Tác giả</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-4">
-                <div class="card">
-                    <div class="card-body text-left">
-                        <a href="#"><img src="~/Images/the-diem-can-bang-bien-chien-luoc-thanh-hanh-dong.jpg" class="img-fluid" /></a>
-                        <p class="card-text title">Some text inside the first card Some text inside the first card</p>
-                        <span class="d-block text-truncate small">Tên Tác giả</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-4">
-                <div class="card">
-                    <div class="card-body text-left">
-                        <a href="#"><img src="~/Images/suy-tuong.jpg" class="img-fluid" /></a>
-                        <p class="card-text title">Some text inside the first card</p>
-                        <span class="d-block text-truncate small">Tên Tác giả nha bạn Tên Tác giả nha bạn</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
-                <div class="card">
-                    <div class="card-body text-left">
-                        <a href="#"><img src="~/Images/mat-biec-phien-ban-phim.jpg" class="img-fluid" /></a>
-                        <p class="card-text title">Some text inside the first card</p>
-                        <span class="small">Tên Tác giả</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-lg-3 col-md-3 col-sm-4">
-                <div class="card">
-                    <div class="card-body text-left">
-                        <a href="#"><img src="~/Images/trieu-phu-bat-dong-san-tu-than-dinh-huong-dau-tu-mua-dau-lai-do.png" class="img-fluid" /></a>
-                        <p class="card-text title">Some text inside the first card</p>
-                    </div>
-                </div>
-            </div>
-        </div>*@
+                    <div class="row mt-2">
+                        <div class="col-lg-3 col-md-3 col-sm-4">
+                            <div class="card">
+                                <div class="card-body text-left">
+                                    <a href="#"><img src="~/Images/trieu-phu-bat-dong-san-tu-than-dinh-huong-dau-tu-mua-dau-lai-do.png" class="img-fluid" /></a>
+                                    <p class="card-text title">Some text inside the first card</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
 
             </div>
         </div>
-       
+
 
         @*<footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>*@
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
     </div>
 
-   
-    
+
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -6,6 +6,17 @@ select * from AccountRole
 select * from Account
 select * from Customer
 select * from Book
+select * from OrderStatus
+select * from [Order]
+select * from OrderDetail
+select * from DeliveryInformation
+--dbcc checkident ('OrderStatus',reseed,0)
+--insert into order status
+insert into OrderStatus(Name) values(N'Chưa xử lý'),
+										(N'Đang đóng gói'),
+										( N'Đang vận chuyển'),
+										(N'Hoàn thành'),
+										(N'Đã hủy')
 
 insert into Role(Id,RoleName) values(NEWID(),'Admin'),(NEWID(),'Customer')
 --insert data into BookType 

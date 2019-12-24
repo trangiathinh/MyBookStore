@@ -326,6 +326,8 @@ C:\BookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csproj.CoreCompileInp
 C:\BookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csproj.CopyComplete
 C:\BookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.dll
 C:\BookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.pdb
+C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\Microsoft.Data.SqlClient.pdb
+C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\pt-BR\Microsoft.Data.SqlClient.resources.dll
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\MyBookStore.dll.config
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\MyBookStore.dll
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\MyBookStore.pdb
@@ -457,7 +459,6 @@ C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\Microsoft.AspNetCore
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\Microsoft.AspNetCore.WebUtilities.xml
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\Microsoft.Bcl.HashCode.xml
-C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\Microsoft.Data.SqlClient.pdb
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\Microsoft.EntityFrameworkCore.xml
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\Microsoft.EntityFrameworkCore.Abstractions.xml
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\Microsoft.EntityFrameworkCore.Design.xml
@@ -505,11 +506,9 @@ C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\fr\Microsoft.Data.Sq
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\it\Microsoft.Data.SqlClient.resources.dll
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\ja\Microsoft.Data.SqlClient.resources.dll
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\ko\Microsoft.Data.SqlClient.resources.dll
-C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\pt-BR\Microsoft.Data.SqlClient.resources.dll
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\ru\Microsoft.Data.SqlClient.resources.dll
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\bin\zh-Hant\Microsoft.Data.SqlClient.resources.dll
-C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csprojAssemblyReference.cache
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csproj.CoreCompileInputs.cache
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.csproj.CopyComplete
 C:\Data\MyBookStore\MyBookStore\MyBookStore\MyBookStore\obj\Debug\MyBookStore.dll

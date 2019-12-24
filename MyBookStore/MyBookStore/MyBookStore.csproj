@@ -338,9 +338,11 @@
     <Compile Include="Repository\IBookRepository.cs" />
     <Compile Include="Repository\IBookTypeRepository.cs" />
     <Compile Include="Repository\ICustomerRepository.cs" />
+    <Compile Include="Repository\IOrderRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IRoleRepository.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />
+    <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
@@ -350,6 +352,7 @@
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\RecoveryAccountViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
   </ItemGroup>
@@ -430,6 +433,7 @@
     <Content Include="Scripts\mycss\shoppingcart.css" />
     <Content Include="Scripts\myjs\detailbook.js" />
     <Content Include="Scripts\myjs\shoppingcart.js" />
+    <Content Include="Scripts\myjs\viewaccountinformation.js" />
     <Content Include="Scripts\myjs\vieworder.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -537,6 +541,7 @@
     <Content Include="Views\Book\Detail.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\ViewOrder.cshtml" />
+    <Content Include="Views\Account\ViewAccountInformation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -8,6 +8,7 @@ namespace MyBookStore.Models
         public Customer()
         {
             Account = new HashSet<Account>();
+            Order = new HashSet<Order>();
         }
 
         public Guid Id { get; set; }
@@ -20,5 +21,6 @@ namespace MyBookStore.Models
         public DateTime CreatedDate { get; set; }
 
         public virtual ICollection<Account> Account { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

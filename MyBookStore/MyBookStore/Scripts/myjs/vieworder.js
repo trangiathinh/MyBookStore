@@ -18,4 +18,21 @@
         $('#new-delivery').val("");
         $('#new-delivery-div').addClass('d-none');
     });
+
+    //place order click
+    $('#place-order').on("click",function (e) {
+        e.preventDefault();
+        var deliveryAddress = $('#delivery').text();
+        console.log(deliveryAddress);
+        $.ajax({
+            url: '/customer/shopping-cart/place-order/' + deliveryAddress,
+            method: 'GET'
+        }).done(function (data) {
+            console.log(data);
+            //if (data != "") {
+            //}
+        });
+    });
+
+
 });
