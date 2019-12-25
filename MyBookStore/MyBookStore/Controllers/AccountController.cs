@@ -218,7 +218,7 @@ namespace MyBookStore.Controllers
                 }
             }
         }
-        [Authorize]
+        [AreaAuthorize("Customer")]
         [Route("view-account-information")]
         public ViewResult ViewAccountInformation()
         {
@@ -250,6 +250,51 @@ namespace MyBookStore.Controllers
                 }).ToList();
             ViewBag.Orders = orders;
             return View(customer);
+        }
+        [HttpPost]
+        [Route("update-infor")]
+        [AreaAuthorize("Customer")]
+        public string UpdateAccountInfor(CustomerViewModel model)
+        {
+            var customer = unitOfWork.CustomerRepository.Get(c => c.Email == model.Email).FirstOrDefault();
+            customer.Address = model.Address;
+            customer.PhoneNumber = model.PhoneNumber;
+            customer.Name = model.Name;
+            try
+            {
+                unitOfWork.CustomerRepository.Update(customer);
+                unitOfWork.Save();
+                return "Cập nhật thành công!";
+            }
+            catch(Exception ex)
+            {
+                unitOfWork.Dispose();
+                return "";
+            }
+        }
+        [Route("view-order-detail/{orderId}")]
+        [AreaAuthorize("Customer")]
+        public JsonResult GetOrderDetail(string orderId)
+        {
+            string email = HttpContext.User.Identity.Name;
+            Guid customerId = unitOfWork.CustomerRepository.Get(c => c.Email == email).FirstOrDefault().Id;
+            List<OrderDetailViewModel> orderDetails = unitOfWork.OrderDetailRepository.Get(o => o.Order.CustomerId == customerId && o.OrderId == new Guid(orderId),null,"Book")
+                                            .Select(o => new OrderDetailViewModel {
+                                                Id=o.Id,
+                                                BookId=o.BookId,
+                                                Image=o.Book.ImagePath,
+                                                OrderId=o.OrderId,
+                                                OrderQuantity=o.OrderQuantity,
+                                                Title=o.Book.Title,
+                                                TotalPrice=o.Book.Price*o.OrderQuantity,
+                                                Price=o.Book.Price,
+                                            }).ToList();
+            Order order = unitOfWork.OrderRepository.Get(o=>o.Id==new Guid(orderId),null, includeProperties:"Delivery").FirstOrDefault();
+            string deliveryAddress = order.Delivery.DeliveryAddress;
+            string receiver = order.Delivery.ReceiverName;
+            ViewBag.DeliveryAddress = deliveryAddress;
+            ViewBag.Receiver = receiver;
+            return Json(orderDetails,JsonRequestBehavior.AllowGet);
         }
         [Route("forgot-password")]
         public ActionResult ForgotPassword()

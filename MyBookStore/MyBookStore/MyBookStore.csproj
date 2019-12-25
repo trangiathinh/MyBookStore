@@ -338,10 +338,12 @@
     <Compile Include="Repository\IBookRepository.cs" />
     <Compile Include="Repository\IBookTypeRepository.cs" />
     <Compile Include="Repository\ICustomerRepository.cs" />
+    <Compile Include="Repository\IOrderDetailRepository.cs" />
     <Compile Include="Repository\IOrderRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IRoleRepository.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />
+    <Compile Include="Repository\OrderDetailRepository.cs" />
     <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
@@ -352,6 +354,7 @@
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\OrderDetailViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\RecoveryAccountViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />

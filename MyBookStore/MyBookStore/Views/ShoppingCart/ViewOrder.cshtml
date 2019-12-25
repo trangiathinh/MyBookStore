@@ -2,6 +2,7 @@
 @using MyBookStore.ViewModels
 @{
     ViewBag.TitlePage = ViewBag.Title;
+    <link href="~/Scripts/mycss/shoppingcart.css" rel="stylesheet" />
 }
 
 <strong>@ViewBag.Title</strong>
@@ -53,7 +54,7 @@
         <button class="btn btn-danger border text-bold ml-2" id="cancel">Hủy</button>
     </div>
     <div class="row col-lg-12">
-        <button class="btn btn-primary" id="place-order">Đặt hàng</button>
+        <button class="btn btn-primary" id="place-order" @(Model.CartItems.Count==0?"disabled":"")>Đặt hàng</button>
     </div>
 </div>
 

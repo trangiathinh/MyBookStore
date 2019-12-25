@@ -23,6 +23,8 @@ namespace MyBookStore.Repository
 
         public IOrderRepository OrderRepository { get; }
 
+        public IOrderDetailRepository OrderDetailRepository { get; }
+
         public UnitOfWork(MyBookStoreContext context,
                           IAccountRepository accountRepository,
                           IRoleRepository roleRepository,
@@ -30,7 +32,8 @@ namespace MyBookStore.Repository
                           IBookTypeRepository bookTypeRepository,
                           IBookRepository bookRepository,
                           IAuthorRepository authorRepository,
-                          IOrderRepository orderRepository)
+                          IOrderRepository orderRepository,
+                          IOrderDetailRepository orderDetailRepository)
         {
             Context = context;
             this.AccountRepository = accountRepository;
@@ -40,6 +43,7 @@ namespace MyBookStore.Repository
             this.BookRepository = bookRepository;
             this.AuthorRepository = authorRepository;
             this.OrderRepository = orderRepository;
+            this.OrderDetailRepository = orderDetailRepository;
         }
         private bool disposed = false;
         public void Dispose(bool disposing)

@@ -29,8 +29,12 @@
             method: 'GET'
         }).done(function (data) {
             console.log(data);
-            //if (data != "") {
-            //}
+            if (data != "") {
+                window.location.href = data;
+            }
+            else {
+                alert("Failure");
+            }
         });
     });
 

@@ -1,5 +1,5 @@
 ﻿@model MyBookStore.ViewModels.CustomerViewModel
-    @using MyBookStore.ViewModels
+@using MyBookStore.ViewModels
 @{
     ViewBag.TitlePage = ViewBag.Title;
 }
@@ -21,7 +21,7 @@
     </div>
     <div class="row">
         <div class="col-lg-8">
-            Email: <span>@Model.Email</span>
+            Email: <span id="email">@Model.Email</span>
         </div>
     </div>
     <div class="row mt-1">
@@ -43,7 +43,7 @@
             Số điện thoại: <span id="phonenumber">@Model.PhoneNumber</span><span>&nbsp;</span><a href="#" id="edit-phonenumber" title="Sửa số điện thoại"><i class="fa fa-edit"></i></a>
         </div>
         <div class="col-lg-5 d-none" id="new-phonenumber-div">
-            <input class="form-control" id="new-phonenumber"/>
+            <input class="form-control" id="new-phonenumber" />
         </div>
         <div class="col-lg-3 d-none" id="new-phonenumber-btn">
             <button class="btn btn-primary" id="save-new-phonenumber">Lưu</button>
@@ -83,8 +83,8 @@
                         <td class="small">@order.TotalPriceOrder<span>đ</span></td>
                         <td class="small">@order.OrderStatus.Name</td>
                         <td>
-                            <button class="btn btn-primary">Chi tiết</button>
-                            @if (order.OrderStatus.Name=="Chưa xử lý")
+                            <button class="btn btn-primary view-detail-order">Chi tiết</button>
+                            @if (order.OrderStatus.Name == "Chưa xử lý")
                             {
                                 <button class="btn btn-danger">Hủy</button>
                             }
@@ -95,12 +95,48 @@
             else
             {
                 <tr>
-                   <td colspan="6">
-                       <strong>Hiện tại bạn chưa có order nào!</strong>
-                   </td> 
+                    <td colspan="6" class="text-center">
+                        <strong>Hiện tại bạn chưa có order nào!</strong>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
+</div>
+<div id="order-detail-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chi tiết đơn hàng</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table class="table" id="table-order-detail">
+                    <thead>
+                        <tr class="small">
+                            <th>Hình Ảnh</th>
+                            <th>Tên sách</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">Người nhận: <span>@(ViewBag.Receiver != null ? ViewBag.Receiver : "")</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">Địa chỉ nhận hàng: <span>@(ViewBag.DeliveryAddress != null ? ViewBag.DeliveryAddress : "")</span></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn border" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="~/Scripts/myjs/viewaccountinformation.js"></script>
