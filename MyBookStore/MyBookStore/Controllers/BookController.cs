@@ -14,14 +14,14 @@ namespace MyBookStore.Controllers
     public class BookController : Controller
     {
         private IUnitOfWork unitOfWork;
-
+        private int itemPerPage = 8;
         public BookController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
         // GET: Book
         [Route()]
-        public ActionResult Index(string bookTypeId="")
+        public ActionResult Index(string bookTypeId="", int page=1)
         {
             IQueryable<BookViewModel> query = unitOfWork.BookRepository.Get().Select(b => new BookViewModel
             {
@@ -48,21 +48,12 @@ namespace MyBookStore.Controllers
                     bookTypeName = bookType.BookTypeName;
                 }
             }
-            //var listBook = unitOfWork.BookRepository.Get().Select(b => new BookViewModel
-            //{
-            //    Id=b.Id,
-            //    IdPublisher=b.IdPublisher,
-            //    BookTypeId=b.BookTypeId,
-            //    Title=b.Title,
-            //    ImagePath=b.ImagePath,
-            //    Quantity=b.Quantity,
-            //    Price=b.Price,
-            //    DiscountPrice=b.DiscountPrice,
-            //    NumberPages=b.NumberPages,
-            //    PublishDate=b.PublishDate,
-            //    StarsAverage=b.StarsAverage,
-            //    Description=b.Description
-            //}).ToList();
+            //total number pages
+            int numberPages = (int)Math.Ceiling(query.Count()*1.0/itemPerPage);
+            ViewBag.NumberPages = numberPages;
+            ViewBag.CurrentPage = page;
+            ViewBag.BookTypeId = bookTypeId;
+            query = query.Skip((page - 1) * itemPerPage).Take(itemPerPage);
             ViewBag.Title = bookTypeName != "" ? bookTypeName : "Sản phẩm nổi bật";
             return View("Index", query.ToList());
         }

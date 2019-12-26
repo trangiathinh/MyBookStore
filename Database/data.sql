@@ -93,6 +93,70 @@ go
 insert into Book(id, IdPublisher,BookTypeId,Title,ImagePath,NumberPages,PublishDate,Price,Quantity,DiscountPrice,Description, StarsAverage,CreatedDate,IsActive)
 values(NEWID(),'8A09A783-6939-4B8F-9286-BEE96B3E24E9','11C4B47A-C697-46AC-89E9-036A684DFAB3',N'Giải tích 12 Nâng cao','Images/vat-ly-12.jpg',328,GETDATE(),25000,10,0,N'Sách môn Vật lý lớp 12 dành cho học sinh ban Nâng Cao.
 Phần lớn các trang sách có 2 cột: cột phụ gồm một số hình vẽ và những biểu bảng, những ghi chú và ví dụ cụ thể để làm rõ hơn kiến thức trình bày ở cột chính. Học sinh không cần ghi nhớ, chỉ cần hiểu sổ liệu trong các biểu bảng, những ví dụ và ghi chú ở cột phụ. Trong cột phụ có những câu hỏi kí hiệu C dùng để nêu vấn đề và gợi mở trong giờ học.',0,GETDATE(),1)
+
+
+--new books
+insert into Book(id, IdPublisher,BookTypeId,Title,ImagePath,NumberPages,PublishDate,Price,Quantity,DiscountPrice,Description, StarsAverage,CreatedDate,IsActive)
+values(NEWID(),'8A09A783-6939-4B8F-9286-BEE96B3E24E9','11C4B47A-C697-46AC-89E9-036A684DFAB3',N'Chuyên đề ôn tập và luyện thi hóa học 12','Images/Chuyen-de-on-tap-va-luyen-thi-hoa-hoa-12.jpg',218,GETDATE(),37000,10,0,N'Cuốn sách "Chuyên đề ôn tập và luyện thi hóa học 12" sẽ cung cấp tài liệu tham khảo cần thiết cho các thầy, cô giáo và các em học sinh ôn tập để nâng cao kiến thức chất lượng kỳ thi tốt nghiệp THPT và kỳ thi tuyển sinh Đại học, Cao đẳng, đảm bảo người tốt nghiệp đạt chuẩn kiến thức, kỹ năng đã quy định cho cấp THPT...
+Nội dung cuốn sách gồm 3 phần:
+Phần thứ nhất: Đề thi tốt nghiệp trung học phổ thông
+Phần thứ hai: Đề thi đại học, cao đẳng
+Phần thứ ba: Đáp án
+Phần thứ nhất với 11 đề kiểm tra và thi tốt nghiệp THPT; phần thứ hai gồm 27 đề thi đại học, cao đẳng. Cuốn sách giúp các em học sinh ôn tập kiến thức cơ bản và làm quen với các dạng bài tập, các dạng đề thi và kiểm tra.',0,GETDATE(),1)
+go
+insert into Book(id, IdPublisher,BookTypeId,Title,ImagePath,NumberPages,PublishDate,Price,Quantity,DiscountPrice,Description, StarsAverage,CreatedDate,IsActive)
+values(NEWID(),'8A09A783-6939-4B8F-9286-BEE96B3E24E9','11C4B47A-C697-46AC-89E9-036A684DFAB3',N'Ôn luyện thi THPT quốc gia năm 2020','Images/On-luyen-thi-thpt-quoc-gia-nam-2020.jpg',248,GETDATE(),108000,10,0,N'Bộ sách Ôn luyện thi THPT quốc gia năm 2020 gồm 05 môn và nhóm môn: Toán, Tiếng Anh, Ngữ văn, Khoa học tự nhiên (Vật lí, Hóa học, Sinh học), Khoa học xã hội (Lịch sử, Địa lí, Giáo dục công dân). 
+Nội dung bộ sách được biên soạn bám sát chuẩn kiến thức, kĩ năng của chương trình cấp THPT, chủ yếu là chương trình lớp 12. Cấu trúc mỗi cuốn sách gồm hai phần chính:
+- Phần 1: Hệ thống câu hỏi ôn tập theo chủ đề môn học
+- Phần 2: Đề tham khảo minh họa 
+Đặc biệt, theo định hướng tổ chức Kì thi THPT Quốc gia trên máy tính thực hiện từ năm 2021 bộ sách được tích hợp Ứng dụng thi thử trực tuyến theo Công nghệ 4.0 E-test nhằm xây dựng môi trường học tập toàn diện cho Nhà trường và học sinh. Ứng dụng cho phép học sinh ôn luyện, làm bài thi thử miễn phí trên nền tảng website và smartphone với số lượng đề thi đa dạng và phong phú được biên soạn bởi các giáo viên luyện thi uy tín. Các cơ sở giáo dục có thể tạo phòng thi cho học sinh với đề thi được biên soạn riêng, chế độ chấm thi, phân tích năng lực học sinh theo đơn vị kiến thức và kĩ năng làm bài tự động theo yêu cầu của từng đơn vị. ',0,GETDATE(),1)
+go
+insert into Book(id, IdPublisher,BookTypeId,Title,ImagePath,NumberPages,PublishDate,Price,Quantity,DiscountPrice,Description, StarsAverage,CreatedDate,IsActive)
+values(NEWID(),'8A09A783-6939-4B8F-9286-BEE96B3E24E9','11C4B47A-C697-46AC-89E9-036A684DFAB3',N'Bài tập bổ trợ và phát triển năng lực môn Tiếng Anh THPT','Images/bai-tap-bo-tro-va-phat-trien-nang-luc-mon-tieng-Anh-thpt.jpg',248,GETDATE(),77000,10,0,N'Bộ sách Bài tập bổ trợ và phát triển năng lực môn Tiếng Anh THPT tập 1 gồm 03 cuốn ứng với 3 khối lớp 10, 11, 12.
+Mỗi cuốn sách được thiết kế theo các Unit ứng với từng chủ điểm trong sách giáo khoa mới của Bộ Giáo dục và Đào tạo.
+Trong mỗi bài học đều có 2 phần:
+- Phần 1: Ôn tập và củng cố lý thuyết nền tảng về từ vựng, luyện âm và ngữ pháp theo chủ điểm của bài học.
+- Phần 2: bao gồm các bài tập vận dụng ngữ pháp và thực hành các kĩ năng Reading- Listening - Writing - Speaking. Sau mỗi bài học đều có bài tập để kiểm tra, củng cố kiến thức.',0,GETDATE(),1)
+go
+insert into Book(id, IdPublisher,BookTypeId,Title,ImagePath,NumberPages,PublishDate,Price,Quantity,DiscountPrice,Description, StarsAverage,CreatedDate,IsActive)
+values(NEWID(),'8A09A783-6939-4B8F-9286-BEE96B3E24E9','11C4B47A-C697-46AC-89E9-036A684DFAB3',N'Câu Hỏi Trắc Nghiệm Địa Lý 12','Images/cau-hoi-trac-nghiem-dia-ly-12.jpg',170,GETDATE(),47000,10,0,N'Cuốn sách được biên soạn theo chương trình mới của Bộ Giáo dục và Đào tạo, nội dung gồm có: - Câu hỏi trắc nghiệm khách quan - Để kiểm tra trắc nghiệm và tự luận khách quan
+Cuốn sách này có thể giúp cho các học sinh ôn tập và tự kiểm tra.',0,GETDATE(),1)
+go
+insert into Book(id, IdPublisher,BookTypeId,Title,ImagePath,NumberPages,PublishDate,Price,Quantity,DiscountPrice,Description, StarsAverage,CreatedDate,IsActive)
+values(NEWID(),'8A09A783-6939-4B8F-9286-BEE96B3E24E9','11C4B47A-C697-46AC-89E9-036A684DFAB3',N'Sinh 12 Tự Luận Và Trắc Nghiệm - Tập 1','Images/sinh-12-tu-luan-va-trac-nghiem-tap-1.jpg',180,GETDATE(),49000,10,0,N'Trắc nghiệm là phương pháp thi mà trong đó đề thi bao gồm nhiều câu hỏi, mỗi câu hỏi nêu ra một vấn đề cùng với những thông tin cần thiết, qua đó thí sinh xác định được câu trả lời đúng. Có nhiều loại câu hỏi trắc nghiệm nhưng người ta thường dùng loại câu hỏi trắc nghiệm nhiều lựa chọn để làm đề thi. Nhưng nếu thí sinh không giải được các bài tập tự luận một cách nhuần nhuyễn thì sẽ rất khó chọn câu trả lời đúng đối với các loại đề đòi hỏi phải tính toán.
+Cuốn sách “Sinh 12 Tự Luận Và Trắc Nghiệm - Tập 1” được biên soạn nhằm giúp học sinh cách giải nhanh các loại đề trắc nghiệm nói trên. Cuốn sách trình bày toàn bộ các kiến thức cơ bản của chương trình nhằm giúp học sinh củng cố và hệ thống hoá đồng thời bên cạnh các câu hỏi cơ bản cũng có những câu hỏi nâng cao, đòi hỏi suy luận nhằm giúp học sinh ôn luyện để thi đại học.',0,GETDATE(),1)
+go
+insert into Book(id, IdPublisher,BookTypeId,Title,ImagePath,NumberPages,PublishDate,Price,Quantity,DiscountPrice,Description, StarsAverage,CreatedDate,IsActive)
+values(NEWID(),'8A09A783-6939-4B8F-9286-BEE96B3E24E9','11C4B47A-C697-46AC-89E9-036A684DFAB3',N'Bồi Dưỡng Hình Học 12 (Tự Luận Và Trắc Nghiệm)','Images/boi-duong-hinh-hoc-12.jpg',190,GETDATE(),56000,10,0,N'Nội dung cuốn sách bao gồm:
+Chương 1: Phép dời hình và phép đồng dạng trong không gian
+Bài 1: Phép dời hình trong không gian
+Bài 2: Phép tịnh tiến – Phép đối xứng và phép quay trong không gian
+Bài 3: Phép vị tự và đồng dạng
+Chương 2: Khối đa diện và thể tích của chúng
+Bài 1: Khái niệm về khối đa diện
+Bài 2: Thể tích của khối đa diện
+Chương 3: Mặt nón, mặt trụ, mặt cầu
+Bài 1: Khái niệm về mặt tròn xoay
+Bài 2: Mặt nón
+Bài 3: Mặt trụ tròn xoay
+Bài 4: Mặt cầu
+Chương 4: Phương pháp toạ độ trong không gian
+Bài 1: Hệ toạ độ trong không gian
+Bài 2: Phương trình mặt phẳng
+Bài 3: Phương trình đường thẳng trong không gian
+Hướng dẫn giải và đáp số',0,GETDATE(),1)
+go
+--sach thieu nhi
+insert into Book(id, IdPublisher,BookTypeId,Title,ImagePath,NumberPages,PublishDate,Price,Quantity,DiscountPrice,Description, StarsAverage,CreatedDate,IsActive)
+values(NEWID(),'8A09A783-6939-4B8F-9286-BEE96B3E24E9','BFF56505-860C-4026-ACB0-8883B26B243C',N'Phẩm Chất Nhà Lãnh Đạo Nhí - Sự Khiêm Tốn','Images/pham-chat-nha-lanh-dao-nhi-su-khiem-ton.jpg',189,GETDATE(),49500,10,0,N'Khiêm tốn là thái độ mà người lãnh đạo nhất định cần phải có. Càng là người có năng lực thì càng không được tỏ vẻ ta đây, mà phải đặt khiêm tốn lên hàng đầu. Cần phải thực lòng tôn trọng người khác, biết cách khen ngợi điểm mạnh của người khác và biết  nhún mình. Nếu có được sự khiêm tốn và biết nhún mình như Trống trong dàn nhạc nhí, bạn sẽ có thể trở thành nhà lãnh đạo xuất sắc, được mọi người tôn trọng và mến mộ.',0,GETDATE(),1)
+go
+insert into Book(id, IdPublisher,BookTypeId,Title,ImagePath,NumberPages,PublishDate,Price,Quantity,DiscountPrice,Description, StarsAverage,CreatedDate,IsActive)
+values(NEWID(),'8A09A783-6939-4B8F-9286-BEE96B3E24E9','BFF56505-860C-4026-ACB0-8883B26B243C',N'Nhà Của Ai Cao Hơn?','Images/nha-cua-ai-cao-hon.jpg',182,GETDATE(),40000,10,0,N'Cú và Thỏ là những người bạn hàng xóm tốt của nhau. Họ sống hạnh phúc trong hai ngôi nhà nằm cạnh nhau trên đồi...
+Cuộc sống sẽ êm đềm trôi nếu như một ngày kia những cái cây trong vườn của Thỏ che mất tầm nhìn của Cú. Ai cũng muốn nhà của của mình cao lên một chút, chẳng bao lâu sau có hai ngôi nhà rất rất cao và hai người hàng xóm không còn thân thiết nữa.
+Điều gì sẽ giúp họ trở lại thành những người bạn tốt như ngày trước?',0,GETDATE(),1)
+go
+insert into Book(id, IdPublisher,BookTypeId,Title,ImagePath,NumberPages,PublishDate,Price,Quantity,DiscountPrice,Description, StarsAverage,CreatedDate,IsActive)
+values(NEWID(),'8A09A783-6939-4B8F-9286-BEE96B3E24E9','BFF56505-860C-4026-ACB0-8883B26B243C',N'Những Gã Khổng Lồ Trái Đất','Images/nhung-ga-khong-lo-trai-dat.jpg',132,GETDATE(),25000,10,0,N'Bộ sách sử dụng hình ảnh CGI (mô phỏng bằng máy tính) để so sánh mức độ khổng lồ và nguy hiểm của các loài sinh vật thời tiền sử nếu chẳng may chúng còn sống và tồn tại chung một thời đại với chúng ta. NHỮNG GÃ KHỔNG LỒ TRÁI ĐẤT giới thiệu những sinh vật đáng gườm nhất về hình thể, những tổ tiên của loài có vú đã từng thống trị Trái Đất hàng trăm triệu năm trước. Bạn có muốn dạo phố chung với những sinh vật cổ đại này?',0,GETDATE(),1)
 select * from Author
 select * from BookType
 select * from Publisher
@@ -106,7 +170,7 @@ select * from Author
 	--8C30A414-BC59-44E8-9FDE-6C0BBE76E702
 	--5F900014-D1D7-44A4-87A2-D4F5D308C64C
 --BookID:
-select * from BookAuthor
+select Id from Book where Id not in(select BookId from BookAuthor)
 --insert data into BookAuthor
 insert into BookAuthor(BookId,AuthorId) values('E73885BB-0DFC-488B-B3D4-0173E09E4F8E','A66E551B-EDBC-407A-81B6-38E6CEEE62BD'),
 										('E73885BB-0DFC-488B-B3D4-0173E09E4F8E','38FA054A-4B05-40B7-B520-40D401FCE8D6'),
@@ -122,3 +186,14 @@ insert into BookAuthor(BookId,AuthorId) values('E73885BB-0DFC-488B-B3D4-0173E09E
 										('A70BA0BB-9489-40C6-A222-B9FC8DCEA0E2','5F900014-D1D7-44A4-87A2-D4F5D308C64C'),
 										('A70BA0BB-9489-40C6-A222-B9FC8DCEA0E2','38FA054A-4B05-40B7-B520-40D401FCE8D6'),
 										('A70BA0BB-9489-40C6-A222-B9FC8DCEA0E2','8C30A414-BC59-44E8-9FDE-6C0BBE76E702')
+										---
+insert into BookAuthor(BookId,AuthorId) values('3D77006F-0368-48DF-BD89-0D7B6119CA87','A66E551B-EDBC-407A-81B6-38E6CEEE62BD'),
+												('20EA7481-4806-4308-B3C2-2186807BB60B','38FA054A-4B05-40B7-B520-40D401FCE8D6'),
+												('5F8A4629-6639-4809-815C-369417B0D44A','8C30A414-BC59-44E8-9FDE-6C0BBE76E702'),
+												('AAF15311-CDA2-43FC-B568-46B5447538D6','5F900014-D1D7-44A4-87A2-D4F5D308C64C'),
+												('EC63EBC0-ADC0-45D9-8346-7876E2AFBD8F','8C30A414-BC59-44E8-9FDE-6C0BBE76E702'),
+												('55117699-2022-4D12-8DCA-A14A207B0F31','38FA054A-4B05-40B7-B520-40D401FCE8D6'),
+												('66858D25-D0F9-4730-8750-DC38D3BA59AF','5F900014-D1D7-44A4-87A2-D4F5D308C64C'),
+												('88054277-5BC8-4AF9-87E3-E6C3F011426B','A66E551B-EDBC-407A-81B6-38E6CEEE62BD'),
+												('67409C1D-41F5-463F-803E-EBFC31381D48','38FA054A-4B05-40B7-B520-40D401FCE8D6')
+								

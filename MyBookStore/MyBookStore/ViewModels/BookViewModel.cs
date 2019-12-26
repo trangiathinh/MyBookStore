@@ -20,8 +20,20 @@ namespace MyBookStore.ViewModels
         public double DiscountPrice { get; set; }
         public string Description { get; set; }
         public int StarsAverage { get; set; }
+        //public PagingInfor Paging { get; set; }
         //public List<Author> Authors { get; set; }
         //public DateTime CreatedDate { get; set; }
         //public bool? IsActive { get; set; }
+    }
+    public class PagingInfor
+    {
+        public int TotalItems { get; set; }
+        public int ItemsPerPage { get; set; }
+        public int CurrentPage { get; set; }
+
+        public int TotalPages
+        {
+            get { return (int)Math.Ceiling(TotalItems * 1.0 / ItemsPerPage); }
+        }
     }
 }

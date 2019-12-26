@@ -30,6 +30,7 @@
         }).done(function (data) {
             console.log(data);
             if (data != "") {
+                alert("Đặt hàng thành công!");
                 window.location.href = data;
             }
             else {

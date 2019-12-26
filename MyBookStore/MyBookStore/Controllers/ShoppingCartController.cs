@@ -142,7 +142,12 @@ namespace MyBookStore.Controllers
                         {
                             //save order detail
                             unitOfWork.Context.OrderDetail.Add(orderDetail);
+                            //update quantity book
+                            var book = unitOfWork.BookRepository.GetById(orderDetail.BookId);
+                            book.Quantity -= orderDetail.OrderQuantity;
+                            unitOfWork.BookRepository.Update(book);
                         }
+
                         unitOfWork.Save();
                         transaction.Commit();
                         //clear shopping cart

@@ -1,6 +1,6 @@
 ﻿@model List<MyBookStore.Models.BookType>
     <div class="category col-lg-3">
-        <strong>Danh mục sách</strong>
+        <strong>@ViewBag.Title</strong>
         <hr />
         @{
             if (Model.Count > 0)

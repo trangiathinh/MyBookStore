@@ -19,6 +19,7 @@ namespace MyBookStore.Controllers
         [Route()]
         public ActionResult Index()
         {
+            ViewBag.Title = "Danh mục sách";
             return PartialView("_Index", unitOfWork.BookTypeRepository.GetAll().ToList());
         }
     }

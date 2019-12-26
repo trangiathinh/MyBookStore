@@ -2,6 +2,7 @@
 @using MyBookStore.ViewModels
 @{
     ViewBag.TitlePage = ViewBag.Title;
+    <link href="~/Scripts/mycss/shoppingcart.css" rel="stylesheet" />
 }
 
 <strong>@ViewBag.Title</strong>
@@ -84,10 +85,8 @@
                         <td class="small">@order.OrderStatus.Name</td>
                         <td>
                             <button class="btn btn-primary view-detail-order">Chi tiết</button>
-                            @if (order.OrderStatus.Name == "Chưa xử lý")
-                            {
-                                <button class="btn btn-danger">Hủy</button>
-                            }
+                            <button class="btn btn-danger" @(order.OrderStatus.Name == "Chưa xử lý" ? "" : "disabled")>Hủy</button>
+
                         </td>
                     </tr>
                 }
@@ -125,10 +124,10 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="5">Người nhận: <span>@(ViewBag.Receiver != null ? ViewBag.Receiver : "")</span></td>
+                            <td colspan="5">Người nhận: <span id="receiver"></span></td>
                         </tr>
                         <tr>
-                            <td colspan="5">Địa chỉ nhận hàng: <span>@(ViewBag.DeliveryAddress != null ? ViewBag.DeliveryAddress : "")</span></td>
+                            <td colspan="5">Địa chỉ nhận hàng: <span id="delivery-address"></span></td>
                         </tr>
                     </tfoot>
                 </table>

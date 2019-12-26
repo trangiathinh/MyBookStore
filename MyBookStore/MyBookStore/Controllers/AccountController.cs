@@ -266,7 +266,7 @@ namespace MyBookStore.Controllers
                 unitOfWork.Save();
                 return "Cập nhật thành công!";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 unitOfWork.Dispose();
                 return "";
@@ -278,23 +278,24 @@ namespace MyBookStore.Controllers
         {
             string email = HttpContext.User.Identity.Name;
             Guid customerId = unitOfWork.CustomerRepository.Get(c => c.Email == email).FirstOrDefault().Id;
-            List<OrderDetailViewModel> orderDetails = unitOfWork.OrderDetailRepository.Get(o => o.Order.CustomerId == customerId && o.OrderId == new Guid(orderId),null,"Book")
-                                            .Select(o => new OrderDetailViewModel {
-                                                Id=o.Id,
-                                                BookId=o.BookId,
-                                                Image=o.Book.ImagePath,
-                                                OrderId=o.OrderId,
-                                                OrderQuantity=o.OrderQuantity,
-                                                Title=o.Book.Title,
-                                                TotalPrice=o.Book.Price*o.OrderQuantity,
-                                                Price=o.Book.Price,
+            List<OrderDetailViewModel> orderDetails = unitOfWork.OrderDetailRepository.Get(o => o.Order.CustomerId == customerId && o.OrderId == new Guid(orderId), null, "Book")
+                                            .Select(o => new OrderDetailViewModel
+                                            {
+                                                Id = o.Id,
+                                                BookId = o.BookId,
+                                                Image = o.Book.ImagePath,
+                                                OrderId = o.OrderId,
+                                                OrderQuantity = o.OrderQuantity,
+                                                Title = o.Book.Title,
+                                                TotalPrice = o.Book.Price * o.OrderQuantity,
+                                                Price = o.Book.Price,
                                             }).ToList();
-            Order order = unitOfWork.OrderRepository.Get(o=>o.Id==new Guid(orderId),null, includeProperties:"Delivery").FirstOrDefault();
+            Order order = unitOfWork.OrderRepository.Get(o => o.Id == new Guid(orderId), null, includeProperties: "Delivery").FirstOrDefault();
             string deliveryAddress = order.Delivery.DeliveryAddress;
             string receiver = order.Delivery.ReceiverName;
-            ViewBag.DeliveryAddress = deliveryAddress;
-            ViewBag.Receiver = receiver;
-            return Json(orderDetails,JsonRequestBehavior.AllowGet);
+            //ViewBag.DeliveryAddress = deliveryAddress;
+            //ViewBag.Receiver = receiver;
+            return Json(new { orderDetails, deliveryAddress, receiver }, JsonRequestBehavior.AllowGet);
         }
         [Route("forgot-password")]
         public ActionResult ForgotPassword()

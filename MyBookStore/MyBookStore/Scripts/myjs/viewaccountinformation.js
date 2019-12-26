@@ -131,7 +131,7 @@
 
         }).done(function (data) {
             let html = "";
-            $(data).each(function (index, value) {
+            $(data.orderDetails).each(function (index, value) {
                 html += '<tr class="small"><td>';
                 html += '<img src="/' + value.Image + '" class="img-thumbnail" style="max-width:98px;max-height:98px;" /> </td>';
                 html += '<td>' + value.Title + '</td>';
@@ -140,6 +140,8 @@
                 html += '<td>' + value.TotalPrice +'<span>đ</span></td></tr>';
             });
             $('#table-order-detail>tbody').append(html);
+            $('#receiver').text(data.receiver);
+            $('#delivery-address').text(data.deliveryAddress);
             $('#order-detail-modal').modal('show');
         });
     });
