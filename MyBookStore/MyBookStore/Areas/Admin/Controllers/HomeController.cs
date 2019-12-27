@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyBookStore.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +10,7 @@ namespace MyBookStore.Areas.Admin.Controllers
     public class HomeController : Controller
     {
         // GET: Admin/Home
-        [Authorize(Roles ="Admin")]
+        [AreaAuthorize("Admin",Roles ="Admin")]
         public ActionResult Index()
         {
             return View();

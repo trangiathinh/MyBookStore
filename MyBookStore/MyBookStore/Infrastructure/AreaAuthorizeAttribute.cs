@@ -29,7 +29,7 @@ namespace MyBookStore.Infrastructure
                         break;
                     }
             }
-            filterContext.Result = new RedirectResult(loginUrl + "?returnUrl=" + filterContext.HttpContext.Request.Url.PathAndQuery);
+            filterContext.Result = new RedirectResult(loginUrl + "?returnUrl=" + Uri.UnescapeDataString(filterContext.HttpContext.Request.Url.PathAndQuery));
             
         }
     }

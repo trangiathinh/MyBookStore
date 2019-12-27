@@ -1,0 +1,23 @@
+﻿#left-category>li>a{
+    text-decoration:none;
+}
+#left-category > li > a {
+    color: #6c757d;
+}
+#left-category > li > a ~ hr {
+    /*margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid orange;*/
+}
+hr {
+    
+}
+#left-category > li a:hover ~ hr {
+    height: .25rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    background: tomato;
+    /*border: none;*/
+    transition:0.3s ease-in-out;
+}

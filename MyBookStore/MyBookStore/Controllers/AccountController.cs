@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyBookStore.Infrastructure;
 using MyBookStore.Models;
 using MyBookStore.Repository;
@@ -45,7 +46,8 @@ namespace MyBookStore.Controllers
                 if (account != null && account.IsActive)
                 {
                     int timeout = model.RememberMe ? 20 : 10;
-                    string roles = string.Join("|", account.AccountRole.ToList());
+                    List<string> roleNames = unitOfWork.Context.AccountRole.Where(r => r.AccountId == account.Id).Include(r => r.Role).Select(r => r.Role.RoleName).ToList();
+                    string roles = string.Join("|", roleNames);
                     var ticket = new FormsAuthenticationTicket(1, account.Customer.Email, DateTime.UtcNow, DateTime.UtcNow.AddMinutes(timeout), model.RememberMe, roles);
                     string encrypted = FormsAuthentication.Encrypt(ticket);
                     var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encrypted);
